@@ -1,0 +1,34 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="com.luck.picture.lib">
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+        <activity
+            android:name="com.luck.picture.lib.ui.PictureAlbumDirectoryActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Slider" />
+        <activity
+            android:name="com.luck.picture.lib.ui.PictureImageGridActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Slider" />
+        <activity
+            android:name="com.luck.picture.lib.ui.PicturePreviewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Slider" />
+        <activity
+            android:name="com.luck.picture.lib.ui.PictureVideoPlayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Slider" />
+
+        <activity
+            android:name="com.luck.picture.lib.ui.PictureExternalPreviewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Slider" />
+
+    </application>
+
+</manifest>
