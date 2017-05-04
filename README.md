@@ -248,16 +248,16 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
 # 兼容性测试：
 ******腾讯优测-深度测试-通过率达到100%******
 
-![image](https://github.com/LuckSiege/PictureSelector/blob/master/image/test.png)
+![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/test.png)
 
 # 演示效果：
 
-![image](https://github.com/LuckSiege/PictureSelector/blob/master/image/1.jpg)
-![image](https://github.com/LuckSiege/PictureSelector/blob/master/image/2.jpg)
-![image](https://github.com/LuckSiege/PictureSelector/blob/master/image/3.jpg)
-![image](https://github.com/LuckSiege/PictureSelector/blob/master/image/4.jpg)
-![image](https://github.com/LuckSiege/PictureSelector/blob/master/image/7.jpg)
-![image](https://github.com/LuckSiege/PictureSelector/blob/master/image/8.jpg)
-![image](https://github.com/LuckSiege/PictureSelector/blob/master/image/9.jpg)
-![image](https://github.com/LuckSiege/PictureSelector/blob/master/image/10.jpg)
+![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/1.jpg)
+![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/2.jpg)
+![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/3.jpg)
+![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/4.jpg)
+![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/7.jpg)
+![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/8.jpg)
+![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/9.jpg)
+![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/10.jpg)
 
