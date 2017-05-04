@@ -42,11 +42,7 @@ public class LuBanCompress implements CompressInterface {
                 listener.onCompressError(images, " There are pictures of compress  is null.");
                 return;
             }
-            if (image.isCut()) {
-                files.add(new File(image.getCutPath()));
-            } else {
-                files.add(new File(image.getPath()));
-            }
+            files.add(new File(image.getPath()));
         }
         if (images.size() == 1) {
             compressOne();

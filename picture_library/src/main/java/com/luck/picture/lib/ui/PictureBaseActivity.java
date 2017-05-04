@@ -33,7 +33,6 @@ public class PictureBaseActivity extends FragmentActivity {
     protected int minSelectNum = 0;
     protected int spanCount = 4;
     protected boolean showCamera = false;
-    protected boolean circularCut = false;
     protected boolean enablePreview = false;
     protected boolean enablePreviewVideo = true;
     protected int selectMode = FunctionConfig.MODE_MULTIPLE;
@@ -75,7 +74,6 @@ public class PictureBaseActivity extends FragmentActivity {
         selectMode = options.getSelectMode();
         maxSelectNum = options.getMaxSelectNum();
         minSelectNum = options.getMinSelectNum();
-        circularCut = options.isCircularCut();
         enablePreviewVideo = options.isPreviewVideo();
         backgroundColor = options.getThemeStyle();
         cb_drawable = options.getCheckedBoxDrawable();

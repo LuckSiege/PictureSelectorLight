@@ -84,10 +84,7 @@ public class PictureExternalPreviewActivity extends FragmentActivity {
         public Fragment getItem(int position) {
             LocalMedia media = images.get(position);
             String path = "";
-            if (media.isCut() && !media.isCompressed()) {
-                // 裁剪过
-                path = media.getCutPath();
-            } else if (media.isCompressed() || (media.isCut() && media.isCompressed())) {
+            if (media.isCompressed()) {
                 // 压缩过,或者裁剪同时压缩过,以最终压缩过图片为准
                 path = media.getCompressPath();
             } else {

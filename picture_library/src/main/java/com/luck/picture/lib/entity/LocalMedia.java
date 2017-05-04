@@ -13,11 +13,9 @@ import java.io.Serializable;
 public class LocalMedia implements Serializable {
     private String path;
     private String compressPath;
-    private String cutPath;
     private long duration;
     private long lastUpdateAt;
     private boolean isChecked;
-    private boolean isCut;
     public int position;
     private int num;
     private int type;
@@ -45,21 +43,6 @@ public class LocalMedia implements Serializable {
     public LocalMedia() {
     }
 
-    public String getCutPath() {
-        return cutPath;
-    }
-
-    public void setCutPath(String cutPath) {
-        this.cutPath = cutPath;
-    }
-
-    public boolean isCut() {
-        return isCut;
-    }
-
-    public void setCut(boolean cut) {
-        isCut = cut;
-    }
 
     public boolean isCompressed() {
         return compressed;

@@ -46,7 +46,6 @@ public class FunctionOptions implements Serializable {
     private int grade;// 压缩档次
     private int maxB;// 压缩多少kb以内
     private boolean isGif;// 是否显示gif
-    private boolean isCircularCut;// 是否采用圆形裁剪
     private int qq_theme;// QQ数字风格
     /**
      * 是否启用像素压缩
@@ -121,13 +120,6 @@ public class FunctionOptions implements Serializable {
         isGif = gif;
     }
 
-    public boolean isCircularCut() {
-        return isCircularCut;
-    }
-
-    public void setCircularCut(boolean circularCut) {
-        isCircularCut = circularCut;
-    }
 
     public boolean isEnablePreview() {
         return enablePreview;
@@ -431,10 +423,6 @@ public class FunctionOptions implements Serializable {
             return this;
         }
 
-        public Builder setCircularCut(boolean circularCut) {
-            options.setCircularCut(circularCut);
-            return this;
-        }
 
         public Builder setRecordVideoSecond(int recordVideoSecond) {
             options.setRecordVideoSecond(recordVideoSecond);

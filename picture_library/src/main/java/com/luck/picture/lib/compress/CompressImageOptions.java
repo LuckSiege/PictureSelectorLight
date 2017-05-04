@@ -21,7 +21,7 @@ public class CompressImageOptions implements CompressInterface {
 
     public static CompressInterface compress(Context context, CompressConfig config, List<LocalMedia> images, CompressListener listener) {
         if (config.getLubanOptions() != null) {
-            return new LuBanCompress(context,config,images,listener);
+            return new LuBanCompress(context, config, images, listener);
         } else {
             return new CompressImageOptions(context, config, images, listener);
         }
@@ -47,12 +47,7 @@ public class CompressImageOptions implements CompressInterface {
     }
 
     private void compress(final LocalMedia image) {
-        String path = "";
-        if (image.isCut()) {
-            path = image.getCutPath();
-        } else {
-            path = image.getPath();
-        }
+        String path = image.getPath();
         if (TextUtils.isEmpty(path)) {
             continueCompress(image, false);
             return;
