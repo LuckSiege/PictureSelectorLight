@@ -1,16 +1,16 @@
-# PictureSelectorLight 无裁剪版
+# PictureSelectorLight 无裁剪功能版
    最近项目中用到多图选择上传的需求，考虑到android机型众多问题就自己花时间写了一个，测试了大概60款机型，出现过一些问题也都一一修复了，基本上稳定了特分享出来，界面UI也是商用级的开发者不用在做太多修改了，界面高度自定义，可以设置符合你项目主色调的风格，集成完成后就可以拿来用。
   
   项目会一直维护，发现问题欢迎提出会第一时间修复，QQ交流群 619458861，个人QQ 893855882@qq.com  希望用得着的朋友点个start。 
-   
+  
+  [PictureSelector完整版](https://github.com/LuckSiege/PictureSelector)
+  
   [我的博客地址](http://blog.csdn.net/luck_mw)
   
-[![](https://jitpack.io/v/LuckSiege/PictureSelector.svg)](https://jitpack.io/#LuckSiege/PictureSelector)
+[![](https://jitpack.io/v/LuckSiege/PictureSelectorLight.svg)](https://jitpack.io/#LuckSiege/PictureSelectorLight)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/LuckSiege)
 [![CSDN](https://img.shields.io/twitter/url/http/blog.csdn.net/luck_mw.svg?style=social)](http://blog.csdn.net/luck_mw)
 [![I](https://img.shields.io/github/issues/LuckSiege/PictureSelector.svg)](https://github.com/LuckSiege/PictureSelector/issues)
-[![Star](https://img.shields.io/github/stars/LuckSiege/PictureSelector.svg)](https://github.com/LuckSiege/PictureSelector)
-
 
 ******功能特点：******  
 ```
@@ -68,7 +68,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege.PictureSelector:picture_library:v1.4.6'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v1.0.1'
 }
 
 ```
@@ -87,10 +87,11 @@ step 1.
 step 2.
 ```
 <dependency>
-      <groupId>com.github.LuckSiege.PictureSelector</groupId>
-      <artifactId>picture_library</artifactId>
-      <version>v1.4.6</version>
+   <groupId>com.github.LuckSiege</groupId>
+   <artifactId>PictureSelectorLight</artifactId>
+   <version>v1.0.1</version>
 </dependency>
+
 
 ```
 项目根目录  
@@ -151,8 +152,8 @@ FunctionOptions options = new FunctionOptions.Builder()
         .setShowCamera() //是否显示拍照选项 这里自动根据type 启动拍照或录视频
         .setEnablePreview() // 是否打开预览选项
         .setPreviewVideo() // 是否预览视频(播放) mode or 多选有效
-        .setCheckedBoxDrawable()
-        .setRecordVideoDefinition() // 视频清晰度
+        .setCheckedBoxDrawable() //自定义选择样式
+        .setRecordVideoDefinition() // 视频清晰度
         .setRecordVideoSecond() // 视频秒数
 	.setCustomQQ_theme()// 可自定义QQ数字风格，不传就默认是蓝色风格
         .setGif()// 是否显示gif图片，默认不显示
@@ -163,8 +164,8 @@ FunctionOptions options = new FunctionOptions.Builder()
         .setPreviewBottomBgColor() //预览底部背景色
         .setBottomBgColor() //图片列表底部背景色
         .setGrade() // 压缩档次 默认三档
-        .setCheckNumMode()
-        .setCompressQuality() // 图片裁剪质量,默认无损
+        .setCheckNumMode() //仿qq数字模式
+        .setCompressQuality() // 图片裁剪质量,默认无损
         .setImageSpanCount() // 每行个数
         .setSelectMedia() // 已选图片，传入在次进去可选中，不能传入网络图片
         .setCompressFlag() // 1 系统自带压缩 2 luban压缩
