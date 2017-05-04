@@ -152,8 +152,8 @@ FunctionOptions options = new FunctionOptions.Builder()
         .setShowCamera() //是否显示拍照选项 这里自动根据type 启动拍照或录视频
         .setEnablePreview() // 是否打开预览选项
         .setPreviewVideo() // 是否预览视频(播放) mode or 多选有效
-        .setCheckedBoxDrawable()
-        .setRecordVideoDefinition() // 视频清晰度
+        .setCheckedBoxDrawable() //自定义选择样式
+        .setRecordVideoDefinition() // 视频清晰度
         .setRecordVideoSecond() // 视频秒数
 	.setCustomQQ_theme()// 可自定义QQ数字风格，不传就默认是蓝色风格
         .setGif()// 是否显示gif图片，默认不显示
@@ -164,8 +164,8 @@ FunctionOptions options = new FunctionOptions.Builder()
         .setPreviewBottomBgColor() //预览底部背景色
         .setBottomBgColor() //图片列表底部背景色
         .setGrade() // 压缩档次 默认三档
-        .setCheckNumMode()
-        .setCompressQuality() // 图片裁剪质量,默认无损
+        .setCheckNumMode() //仿qq数字模式
+        .setCompressQuality() // 图片裁剪质量,默认无损
         .setImageSpanCount() // 每行个数
         .setSelectMedia() // 已选图片，传入在次进去可选中，不能传入网络图片
         .setCompressFlag() // 1 系统自带压缩 2 luban压缩
