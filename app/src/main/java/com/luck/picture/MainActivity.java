@@ -217,7 +217,6 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
                             .setSelectMode(selectMode) // 单选 or 多选
                             .setShowCamera(isShow) //是否显示拍照选项 这里自动根据type 启动拍照或录视频
                             .setEnablePreview(enablePreview) // 是否打开预览选项
-                            .setCircularCut(false)// 是否采用圆形裁剪
                             .setPreviewVideo(isPreviewVideo) // 是否预览视频(播放) mode or 多选有效
                             .setCheckedBoxDrawable(checkedBoxDrawable)
                             .setRecordVideoDefinition(FunctionConfig.HIGH) // 视频清晰度
@@ -268,10 +267,7 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
             selectMedia = resultList;
             Log.i("callBack_result", selectMedia.size() + "");
             LocalMedia media = resultList.get(0);
-            if (media.isCut() && !media.isCompressed()) {
-                // 裁剪过
-                String path = media.getCutPath();
-            } else if (media.isCompressed() || (media.isCut() && media.isCompressed())) {
+            if (media.isCompressed()) {
                 // 压缩过,或者裁剪同时压缩过,以最终压缩过图片为准
                 String path = media.getCompressPath();
             } else {
