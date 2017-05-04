@@ -68,7 +68,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege.PictureSelector:picture_library:v1.4.6'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v1.0.1'
 }
 
 ```
@@ -87,10 +87,11 @@ step 1.
 step 2.
 ```
 <dependency>
-      <groupId>com.github.LuckSiege.PictureSelector</groupId>
-      <artifactId>picture_library</artifactId>
-      <version>v1.4.6</version>
+   <groupId>com.github.LuckSiege</groupId>
+   <artifactId>PictureSelectorLight</artifactId>
+   <version>v1.0.1</version>
 </dependency>
+
 
 ```
 项目根目录  
