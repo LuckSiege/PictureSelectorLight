@@ -239,6 +239,11 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
     };
     
 ```
+###### 版本 v1.0.4
+###### 1.新增图片预览长按保存至手机
+###### 2.新增单选图片回调接口
+###### 3.修复有时不回调OnSelectResultCallback的问题
+###### 4.修复部分bug
 
 # 项目使用第三方库：
 ###### 1.eventbus:3.0.0'
