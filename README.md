@@ -68,7 +68,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v1.0.3'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v1.0.4'
 }
 
 ```
@@ -89,7 +89,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v1.0.3</version>
+   <version>v1.0.4</version>
 </dependency>
 
 
@@ -208,6 +208,8 @@ public class App extends Application {
 ```
 ******预览图片******       
 ```
+ // 预览图片 可长按保存 也可自定义保存路径
+ PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
  PictureConfig.getInstance().externalPicturePreview(mContext, position, selectMedia);
 ```
 ******预览视频****** 
