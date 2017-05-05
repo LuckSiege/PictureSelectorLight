@@ -113,6 +113,7 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
         takePhoto = getIntent().getBooleanExtra(FunctionConfig.FUNCTION_TAKE, false);
         if (savedInstanceState != null) {
             cameraPath = savedInstanceState.getString(FunctionConfig.BUNDLE_CAMERA_PATH);
+            takePhoto = savedInstanceState.getBoolean(FunctionConfig.FUNCTION_TAKE);
         }
         if (takePhoto) {
             // 只拍照
@@ -682,6 +683,7 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString(FunctionConfig.BUNDLE_CAMERA_PATH, cameraPath);
+        outState.putBoolean(FunctionConfig.FUNCTION_TAKE, takePhoto);
     }
 
 
