@@ -13,7 +13,6 @@
             android:theme="@style/Theme.Slider" />
         <activity
             android:name="com.luck.picture.lib.ui.PictureImageGridActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Slider" />
         <activity
@@ -22,8 +21,8 @@
             android:theme="@style/Theme.Slider" />
         <activity
             android:name="com.luck.picture.lib.ui.PictureVideoPlayActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Slider" />
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="sensor" />
 
         <activity
             android:name="com.luck.picture.lib.ui.PictureExternalPreviewActivity"
