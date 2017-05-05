@@ -78,7 +78,7 @@ public class PictureImagePreviewFragment extends Fragment {
         final String path = getArguments().getString(PATH);
         directory_path = getArguments().getString(FunctionConfig.DIRECTORY_PATH);
         isSave = getArguments().getBoolean("isSave");
-        if (!isSave) {
+        if (!isSave && path.startsWith("http")) {
             showPleaseDialog("请稍候...");
         }
         Glide.with(container.getContext())
