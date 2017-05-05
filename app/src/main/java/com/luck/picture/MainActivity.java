@@ -283,7 +283,9 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
 
         @Override
         public void onSelectSuccess(LocalMedia media) {
-
+            selectMedia.add(media);
+            adapter.setList(selectMedia);
+            adapter.notifyDataSetChanged();
         }
     };
 
