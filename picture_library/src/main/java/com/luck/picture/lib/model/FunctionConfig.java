@@ -38,7 +38,7 @@ public class FunctionConfig implements Serializable {
     public static final String EXTRA_POSITION = "position";
     public static final String EXTRA_PREVIEW_LIST = "previewList";
     public static final String EXTRA_PREVIEW_SELECT_LIST = "previewSelectList";
-
+    public static final String DIRECTORY_PATH = "directory_path";
     public final static String FOLDER_NAME = "folderName";
     public final static String BUNDLE_CAMERA_PATH = "CameraPath";
     public final static String EXTRA_RESULT = "select_result";

@@ -274,6 +274,7 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
             activityFinish(1);
         } else if (id == R.id.picture_tv_right) {
             activityFinish(2);
+            releaseCallBack();
         } else if (id == R.id.id_preview) {
             if (Utils.isFastDoubleClick()) {
                 return;
@@ -654,7 +655,21 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
         }
         PictureConfig.OnSelectResultCallback resultCallback = PictureConfig.getInstance().getResultCallback();
         if (resultCallback != null) {
-            resultCallback.onSelectSuccess(result);
+            switch (selectMode) {
+                case FunctionConfig.MODE_SINGLE:
+                    // 单选
+                    if (result.size() > 0) {
+                        resultCallback.onSelectSuccess(result.get(0));
+                    }
+                    break;
+                case FunctionConfig.MODE_MULTIPLE:
+                    // 多选
+                    resultCallback.onSelectSuccess(result);
+                    break;
+            }
+            releaseCallBack();
+        } else {
+            showToast("回调接口为空了");
         }
         EventEntity obj = new EventEntity(FunctionConfig.CLOSE_FLAG);
         EventBus.getDefault().post(obj);
@@ -771,6 +786,11 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
         }).compress();
     }
 
+    /**
+     * 提示框
+     *
+     * @param msg
+     */
     private void showPleaseDialog(String msg) {
         if (!isFinishing()) {
             dialog = new SweetAlertDialog(PictureImageGridActivity.this);
@@ -779,6 +799,9 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
         }
     }
 
+    /**
+     * 关闭提示框
+     */
     private void dismiss() {
         if (dialog != null && dialog.isShowing()) {
             dialog.cancel();
@@ -789,10 +812,16 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
      * 释放静态
      */
     protected void clearData() {
-        PictureConfig.getInstance().resultCallback = null;
         ImagesObservable.getInstance().clearLocalFolders();
         ImagesObservable.getInstance().clearLocalMedia();
         ImagesObservable.getInstance().clearSelectedLocalMedia();
+    }
+
+    /**
+     * 释放回调 导致的内存泄漏
+     */
+    protected void releaseCallBack() {
+        PictureConfig.getInstance().resultCallback = null;
     }
 
     @Override

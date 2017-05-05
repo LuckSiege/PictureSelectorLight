@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.luck.picture.lib.R;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.model.FunctionConfig;
-import com.luck.picture.lib.model.PictureConfig;
 import com.luck.picture.lib.widget.PreviewViewPager;
 
 import java.util.ArrayList;
@@ -32,6 +31,7 @@ public class PictureExternalPreviewActivity extends FragmentActivity {
     private PreviewViewPager viewPager;
     private List<LocalMedia> images = new ArrayList<>();
     private int position = 0;
+    private String directory_path;
     private SimpleFragmentAdapter adapter;
 
     @Override
@@ -42,6 +42,7 @@ public class PictureExternalPreviewActivity extends FragmentActivity {
         left_back = (ImageButton) findViewById(R.id.left_back);
         viewPager = (PreviewViewPager) findViewById(R.id.preview_pager);
         position = getIntent().getIntExtra(FunctionConfig.EXTRA_POSITION, 0);
+        directory_path = getIntent().getStringExtra(FunctionConfig.DIRECTORY_PATH);
         images = (List<LocalMedia>) getIntent().getSerializableExtra(FunctionConfig.EXTRA_PREVIEW_SELECT_LIST);
         left_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +91,7 @@ public class PictureExternalPreviewActivity extends FragmentActivity {
             } else {
                 path = media.getPath();
             }
-            PictureImagePreviewFragment fragment = PictureImagePreviewFragment.getInstance(path, images);
+            PictureImagePreviewFragment fragment = PictureImagePreviewFragment.getInstance(path, false, directory_path, images);
             return fragment;
         }
 
@@ -101,9 +102,4 @@ public class PictureExternalPreviewActivity extends FragmentActivity {
     }
 
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        PictureConfig.getInstance().resultCallback = null;
-    }
 }
