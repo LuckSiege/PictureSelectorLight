@@ -68,7 +68,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v1.0.3'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v1.0.4'
 }
 
 ```
@@ -89,7 +89,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v1.0.3</version>
+   <version>v1.0.4</version>
 </dependency>
 
 
@@ -208,6 +208,8 @@ public class App extends Application {
 ```
 ******预览图片******       
 ```
+ // 预览图片 可长按保存 也可自定义保存路径
+ PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
  PictureConfig.getInstance().externalPicturePreview(mContext, position, selectMedia);
 ```
 ******预览视频****** 
@@ -237,6 +239,11 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
     };
     
 ```
+###### 版本 v1.0.4
+###### 1.新增图片预览长按保存至手机
+###### 2.新增单选图片回调接口
+###### 3.修复有时不回调OnSelectResultCallback的问题
+###### 4.修复部分bug
 
 # 项目使用第三方库：
 ###### 1.eventbus:3.0.0'
