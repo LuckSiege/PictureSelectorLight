@@ -155,6 +155,7 @@ FunctionOptions options = new FunctionOptions.Builder()
         .setCheckedBoxDrawable() //自定义选择样式
         .setRecordVideoDefinition() // 视频清晰度
         .setRecordVideoSecond() // 视频秒数
+	.setVideoS(0)// 查询多少秒内的视频 单位:秒
 	.setCustomQQ_theme()// 可自定义QQ数字风格，不传就默认是蓝色风格
         .setGif()// 是否显示gif图片，默认不显示
         .setMaxB() // 压缩最大值 例如:200kb  就设置202400，202400 / 1024 = 200kb左右
