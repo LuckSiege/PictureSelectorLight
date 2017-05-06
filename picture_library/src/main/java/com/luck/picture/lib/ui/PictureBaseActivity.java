@@ -58,6 +58,7 @@ public class PictureBaseActivity extends FragmentActivity {
     protected int compressH;
     protected int maxB = 0;
     protected int grade;
+    protected long videoS;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,7 +78,8 @@ public class PictureBaseActivity extends FragmentActivity {
         enablePreviewVideo = options.isPreviewVideo();
         backgroundColor = options.getThemeStyle();
         cb_drawable = options.getCheckedBoxDrawable();
-        qq_theme = options.getQq_theme();
+        qq_theme = options.getCustomQQ_theme();
+        videoS = options.getVideoS();
         isCompress = options.isCompress();
         spanCount = options.getImageSpanCount();
         maxB = options.getMaxB();
