@@ -66,6 +66,7 @@ public class PictureBaseActivity extends FragmentActivity {
     protected int right_color;
     protected int statusBar;
     protected boolean isImmersive;
+    protected boolean isNumComplete;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,7 +78,9 @@ public class PictureBaseActivity extends FragmentActivity {
             options = new FunctionOptions.Builder().create();
         }
         isImmersive = options.isImmersive();
-        Eyes.setStatusBarLightMode(this, Color.WHITE, isImmersive);
+        if (isImmersive) {
+            Eyes.setStatusBarLightMode(this, Color.WHITE, isImmersive);
+        }
         type = options.getType();
         showCamera = options.isShowCamera();
         enablePreview = options.isEnablePreview();
@@ -92,6 +95,7 @@ public class PictureBaseActivity extends FragmentActivity {
         backgroundColor = options.getThemeStyle();
         cb_drawable = options.getCheckedBoxDrawable();
         qq_theme = options.getCustomQQ_theme();
+        isNumComplete = options.isNumComplete();
         videoS = options.getVideoS();
         isCompress = options.isCompress();
         spanCount = options.getImageSpanCount();

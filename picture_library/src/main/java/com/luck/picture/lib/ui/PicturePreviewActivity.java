@@ -83,7 +83,9 @@ public class PicturePreviewActivity extends PictureBaseActivity implements View.
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
-        Eyes.setStatusBarLightMode(this, Color.WHITE, false);
+        if (isImmersive) {
+            Eyes.setStatusBarLightMode(this, Color.WHITE, false);
+        }
         rl_title = (RelativeLayout) findViewById(R.id.rl_title);
         picture_left_back = (ImageView) findViewById(R.id.picture_left_back);
         viewPager = (PreviewViewPager) findViewById(R.id.preview_pager);
@@ -254,14 +256,22 @@ public class PicturePreviewActivity extends PictureBaseActivity implements View.
         boolean enable = selectImages.size() != 0;
         if (enable) {
             tv_ok.setEnabled(true);
-            tv_img_num.setVisibility(View.VISIBLE);
-            tv_img_num.startAnimation(animation);
-            tv_img_num.setText(selectImages.size() + "");
-            tv_ok.setText(getString(R.string.picture_completed));
+            if (isNumComplete) {
+                tv_ok.setText(getString(R.string.picture_done_front_num, selectImages.size(), maxSelectNum));
+            } else {
+                tv_img_num.startAnimation(animation);
+                tv_img_num.setVisibility(View.VISIBLE);
+                tv_img_num.setText(selectImages.size() + "");
+                tv_ok.setText(getString(R.string.picture_completed));
+            }
         } else {
             tv_ok.setEnabled(false);
-            tv_img_num.setVisibility(View.INVISIBLE);
-            tv_ok.setText(getString(R.string.picture_please_select));
+            if (isNumComplete) {
+                tv_ok.setText(getString(R.string.picture_done));
+            } else {
+                tv_img_num.setVisibility(View.INVISIBLE);
+                tv_ok.setText(getString(R.string.picture_please_select));
+            }
             updateSelector(refresh);
         }
     }

@@ -53,6 +53,7 @@ public class FunctionOptions implements Serializable {
     private int picture_right_color;
     private int statusBar;
     private boolean isImmersive;
+    private boolean isNumComplete;
     /**
      * 是否启用像素压缩
      */
@@ -84,6 +85,14 @@ public class FunctionOptions implements Serializable {
 
     public void setStatusBar(int statusBar) {
         this.statusBar = statusBar;
+    }
+
+    public boolean isNumComplete() {
+        return isNumComplete;
+    }
+
+    public void setNumComplete(boolean numComplete) {
+        isNumComplete = numComplete;
     }
 
     public int getPicture_title_color() {
@@ -618,6 +627,11 @@ public class FunctionOptions implements Serializable {
 
         public Builder setLeftBackDrawable(int leftBackDrawable) {
             options.setLeftBackDrawable(leftBackDrawable);
+            return this;
+        }
+
+        public Builder setNumComplete(boolean numComplete) {
+            options.setNumComplete(numComplete);
             return this;
         }
 
