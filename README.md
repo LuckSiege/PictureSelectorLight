@@ -68,7 +68,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v1.0.4'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v1.0.5'
 }
 
 ```
@@ -89,7 +89,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v1.0.4</version>
+   <version>v1.0.5</version>
 </dependency>
 
 
@@ -173,6 +173,7 @@ FunctionOptions options = new FunctionOptions.Builder()
         .setCompressW() // 压缩宽 如果值大于图片原始宽高无效
         .setCompressH() // 压缩高 如果值大于图片原始宽高无效
         .setThemeStyle() // 设置主题样式
+	.setNumComplete(false) // 0/9 完成  样式
 	.setPicture_title_color() // 设置标题字体颜色
         .setPicture_right_color() // 设置标题右边字体颜色
         .setLeftBackDrawable() // 设置返回键图标
@@ -257,11 +258,14 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
     };
     
 ```
-###### 版本 v1.0.4
-###### 1.新增图片预览长按保存至手机
-###### 2.新增单选图片回调接口
-###### 3.修复有时不回调OnSelectResultCallback的问题
-###### 4.修复部分bug
+###### 版本 v1.0.5
+###### 新增视频秒数查询
+###### 新增状态栏字体颜色改变
+###### 新增标题栏文字颜色改变
+###### 新增状态栏颜色单独设置
+###### 新增底部已完成样式( 0/9 完成) 样式
+###### 新增返回图标的设置
+###### 修复视频播放前白屏问题
 
 # 项目使用第三方库：
 ###### 1.eventbus:3.0.0'
