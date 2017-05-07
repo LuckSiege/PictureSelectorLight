@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
     public static final String TAG = "MainActivity";
     private RecyclerView recyclerView;
     private GridImageAdapter adapter;
-    private RadioGroup rgbs, rgbs01, rgbs0, rgbs1, rgbs2, rgbs4, rgbs5, rgbs7, rgbs8, rgbs9, rgbs10;
+    private RadioGroup rgbs, rgbs01, rgbs0, rgbs1, rgbs2, rgbs4, rgbs5, rgbs7, rgbs8, rgbs9, rgbs10, rgbs11;
     private int selectMode = FunctionConfig.MODE_MULTIPLE;
     private int maxSelectNum = 9;// 图片最大可选数量
     private ImageButton minus, plus;
@@ -62,6 +62,7 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
     private int themeStyle;
     private int previewColor, completeColor, previewBottomBgColor, previewTopBgColor, bottomBgColor, checkedBoxDrawable;
     private boolean mode = false;// 启动相册模式
+    private boolean clickVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,7 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
         rgbs9 = (RadioGroup) findViewById(R.id.rgbs9);
         et_kb = (EditText) findViewById(R.id.et_kb);
         rgbs10 = (RadioGroup) findViewById(R.id.rgbs10);
+        rgbs11 = (RadioGroup) findViewById(R.id.rgbs11);
         findViewById(R.id.left_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,6 +111,7 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
         rgbs9.setOnCheckedChangeListener(this);
         rgbs01.setOnCheckedChangeListener(this);
         rgbs10.setOnCheckedChangeListener(this);
+        rgbs11.setOnCheckedChangeListener(this);
 
         minus.setOnClickListener(this);
         plus.setOnClickListener(this);
@@ -241,6 +244,7 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
                             .setCompressH(compressH) // 压缩高 如果值大于图片原始宽高无效
                             .setThemeStyle(themeStyle) // 设置主题样式
                             .setNumComplete(false) // 0/9 完成  样式
+                            .setClickVideo(clickVideo)// 开启点击声音
 //                            .setPicture_title_color(ContextCompat.getColor(MainActivity.this, R.color.black)) // 设置标题字体颜色
 //                            .setPicture_right_color(ContextCompat.getColor(MainActivity.this, R.color.black)) // 设置标题右边字体颜色
 //                            .setLeftBackDrawable(R.mipmap.back2) // 设置返回键图标
@@ -379,6 +383,12 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
             case R.id.rb_luban:
                 compressFlag = 2;
                 ll_luban_wh.setVisibility(View.VISIBLE);
+                break;
+            case R.id.rb_off:
+                clickVideo = false;
+                break;
+            case R.id.rb_open:
+                clickVideo = true;
                 break;
         }
     }
