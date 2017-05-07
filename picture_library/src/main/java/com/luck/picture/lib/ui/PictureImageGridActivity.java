@@ -138,8 +138,11 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
             rl_picture_title = (RelativeLayout) findViewById(R.id.rl_picture_title);
             picture_tv_title = (TextView) findViewById(R.id.picture_tv_title);
             picture_tv_right = (TextView) findViewById(R.id.picture_tv_right);
+            picture_tv_title.setTextColor(title_color);
+            picture_tv_right.setTextColor(right_color);
+            picture_left_back.setImageResource(leftDrawable);
             rl_picture_title.setBackgroundColor(backgroundColor);
-            ToolbarUtil.setColorNoTranslucent(this, backgroundColor);
+            ToolbarUtil.setColorNoTranslucent(this, statusBar);
             tv_ok = (TextView) findViewById(R.id.tv_ok);
             id_preview = (TextView) findViewById(R.id.id_preview);
             tv_img_num = (TextView) findViewById(R.id.tv_img_num);

@@ -89,9 +89,11 @@ public class PictureAlbumDirectoryActivity extends PictureBaseActivity implement
                 break;
         }
         ToolbarUtil.setColorNoTranslucent(this, backgroundColor);
-        rl_picture_title.setBackgroundColor(backgroundColor);
+        rl_picture_title.setBackgroundColor(statusBar);
         picture_tv_right.setText(getString(R.string.picture_cancel));
         picture_tv_right.setOnClickListener(this);
+        picture_tv_right.setTextColor(right_color);
+        picture_tv_title.setTextColor(title_color);
         adapter = new PictureAlbumDirectoryAdapter(this);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);

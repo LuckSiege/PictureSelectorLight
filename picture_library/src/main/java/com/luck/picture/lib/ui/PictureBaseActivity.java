@@ -3,6 +3,7 @@ package com.luck.picture.lib.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.flyn.Eyes;
 import com.luck.picture.lib.model.FunctionConfig;
 import com.luck.picture.lib.model.FunctionOptions;
 
@@ -59,6 +61,11 @@ public class PictureBaseActivity extends FragmentActivity {
     protected int maxB = 0;
     protected int grade;
     protected long videoS;
+    protected int leftDrawable;
+    protected int title_color;
+    protected int right_color;
+    protected int statusBar;
+    protected boolean isImmersive;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,12 +76,18 @@ public class PictureBaseActivity extends FragmentActivity {
         if (options == null) {
             options = new FunctionOptions.Builder().create();
         }
+        isImmersive = options.isImmersive();
+        Eyes.setStatusBarLightMode(this, Color.WHITE, isImmersive);
         type = options.getType();
         showCamera = options.isShowCamera();
         enablePreview = options.isEnablePreview();
         selectMode = options.getSelectMode();
         maxSelectNum = options.getMaxSelectNum();
         minSelectNum = options.getMinSelectNum();
+        leftDrawable = options.getLeftBackDrawable();
+        statusBar = options.getStatusBar();
+        title_color = options.getPicture_title_color();
+        right_color = options.getPicture_right_color();
         enablePreviewVideo = options.isPreviewVideo();
         backgroundColor = options.getThemeStyle();
         cb_drawable = options.getCheckedBoxDrawable();

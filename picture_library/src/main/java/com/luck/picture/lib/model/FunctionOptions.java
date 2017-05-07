@@ -28,6 +28,7 @@ public class FunctionOptions implements Serializable {
     private boolean isPreviewVideo; // 是否可预览视频(播放)
     private int imageSpanCount = 4; // 列表每行显示个数
     private int themeStyle; // 标题栏背景色;
+    private int leftBackDrawable;// 返回箭头
     private int checkedBoxDrawable;// 图片选择默认样式
     private int recordVideoSecond;// 录视频秒数
     private int recordVideoDefinition;// 视频清晰度
@@ -48,6 +49,10 @@ public class FunctionOptions implements Serializable {
     private boolean isGif;// 是否显示gif
     private int qq_theme;// QQ数字风格
     private long videoS = 0;
+    private int picture_title_color;
+    private int picture_right_color;
+    private int statusBar;
+    private boolean isImmersive;
     /**
      * 是否启用像素压缩
      */
@@ -60,6 +65,58 @@ public class FunctionOptions implements Serializable {
     public FunctionOptions() {
         super();
 
+    }
+
+    public boolean isImmersive() {
+        return isImmersive;
+    }
+
+    public void setImmersive(boolean immersive) {
+        isImmersive = immersive;
+    }
+
+    public int getStatusBar() {
+        if (statusBar == 0) {
+            statusBar = themeStyle;
+        }
+        return statusBar;
+    }
+
+    public void setStatusBar(int statusBar) {
+        this.statusBar = statusBar;
+    }
+
+    public int getPicture_title_color() {
+        if (picture_title_color == 0) {
+            picture_title_color = Color.parseColor("#FFFFFF");
+        }
+        return picture_title_color;
+    }
+
+    public void setPicture_title_color(int picture_title_color) {
+        this.picture_title_color = picture_title_color;
+    }
+
+    public int getPicture_right_color() {
+        if (picture_right_color == 0) {
+            picture_right_color = Color.parseColor("#FFFFFF");
+        }
+        return picture_right_color;
+    }
+
+    public void setPicture_right_color(int picture_right_color) {
+        this.picture_right_color = picture_right_color;
+    }
+
+    public int getLeftBackDrawable() {
+        if (leftBackDrawable == 0) {
+            leftBackDrawable = R.drawable.picture_back;
+        }
+        return leftBackDrawable;
+    }
+
+    public void setLeftBackDrawable(int leftBackDrawable) {
+        this.leftBackDrawable = leftBackDrawable;
     }
 
     public int getType() {
@@ -535,6 +592,32 @@ public class FunctionOptions implements Serializable {
 
         public Builder setEnableQualityCompress(boolean enableQualityCompress) {
             options.setEnableQualityCompress(enableQualityCompress);
+            return this;
+        }
+
+
+        public Builder setStatusBar(int statusBar) {
+            options.setStatusBar(statusBar);
+            return this;
+        }
+
+        public Builder setImmersive(boolean immersive) {
+            options.setImmersive(immersive);
+            return this;
+        }
+
+        public Builder setPicture_title_color(int title_color) {
+            options.setPicture_title_color(title_color);
+            return this;
+        }
+
+        public Builder setPicture_right_color(int right_color) {
+            options.setPicture_right_color(right_color);
+            return this;
+        }
+
+        public Builder setLeftBackDrawable(int leftBackDrawable) {
+            options.setLeftBackDrawable(leftBackDrawable);
             return this;
         }
 

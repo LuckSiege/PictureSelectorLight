@@ -1,5 +1,6 @@
 package com.luck.picture.lib.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import com.luck.picture.lib.dialog.OptAnimationLoader;
 import com.luck.picture.lib.dialog.SweetAlertDialog;
 import com.luck.picture.lib.entity.EventEntity;
 import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.flyn.Eyes;
 import com.luck.picture.lib.model.FunctionConfig;
 import com.luck.picture.lib.observable.ImagesObservable;
 import com.luck.picture.lib.utils.ToolbarUtil;
@@ -81,6 +83,7 @@ public class PicturePreviewActivity extends PictureBaseActivity implements View.
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+        Eyes.setStatusBarLightMode(this, Color.WHITE, false);
         rl_title = (RelativeLayout) findViewById(R.id.rl_title);
         picture_left_back = (ImageView) findViewById(R.id.picture_left_back);
         viewPager = (PreviewViewPager) findViewById(R.id.preview_pager);
