@@ -240,6 +240,7 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
                             .setCompressW(compressW) // 压缩宽 如果值大于图片原始宽高无效
                             .setCompressH(compressH) // 压缩高 如果值大于图片原始宽高无效
                             .setThemeStyle(themeStyle) // 设置主题样式
+                            .setNumComplete(false) // 0/9 完成  样式
 //                            .setPicture_title_color(ContextCompat.getColor(MainActivity.this, R.color.black)) // 设置标题字体颜色
 //                            .setPicture_right_color(ContextCompat.getColor(MainActivity.this, R.color.black)) // 设置标题右边字体颜色
 //                            .setLeftBackDrawable(R.mipmap.back2) // 设置返回键图标
