@@ -54,6 +54,7 @@ public class FunctionOptions implements Serializable {
     private int statusBar;
     private boolean isImmersive;
     private boolean isNumComplete;
+    private boolean isClickVideo;
     /**
      * 是否启用像素压缩
      */
@@ -66,6 +67,14 @@ public class FunctionOptions implements Serializable {
     public FunctionOptions() {
         super();
 
+    }
+
+    public boolean isClickVideo() {
+        return isClickVideo;
+    }
+
+    public void setClickVideo(boolean clickVideo) {
+        isClickVideo = clickVideo;
     }
 
     public boolean isImmersive() {
@@ -632,6 +641,11 @@ public class FunctionOptions implements Serializable {
 
         public Builder setNumComplete(boolean numComplete) {
             options.setNumComplete(numComplete);
+            return this;
+        }
+
+        public Builder setClickVideo(boolean isClickVideo) {
+            options.setClickVideo(isClickVideo);
             return this;
         }
 

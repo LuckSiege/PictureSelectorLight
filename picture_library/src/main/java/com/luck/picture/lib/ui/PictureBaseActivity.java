@@ -67,6 +67,7 @@ public class PictureBaseActivity extends FragmentActivity {
     protected int statusBar;
     protected boolean isImmersive;
     protected boolean isNumComplete;
+    protected boolean clickVideo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,6 +98,7 @@ public class PictureBaseActivity extends FragmentActivity {
         qq_theme = options.getCustomQQ_theme();
         isNumComplete = options.isNumComplete();
         videoS = options.getVideoS();
+        clickVideo = options.isClickVideo();
         isCompress = options.isCompress();
         spanCount = options.getImageSpanCount();
         maxB = options.getMaxB();

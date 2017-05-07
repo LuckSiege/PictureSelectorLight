@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.MediaMetadataRetriever;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -79,6 +80,8 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
     private boolean is_top_activity;
     private boolean takePhoto = false;// 是否只单独调用拍照
     private boolean takePhotoSuccess = false;// 单独拍照是否成功
+    private SoundPool soundPool;//声明一个SoundPool
+    private int soundID;//创建某个声音对应的音频ID
 
     //EventBus 3.0 回调
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -214,7 +217,8 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
             tv_ok.setTextColor(completeColor);
             picture_tv_right.setText(getString(R.string.picture_cancel));
             recyclerView.setHasFixedSize(true);
-            recyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, ScreenUtils.dip2px(this, 2), false));
+            recyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount,
+                    ScreenUtils.dip2px(this, 2), false));
             recyclerView.setLayoutManager(new GridLayoutManager(this, spanCount));
             // 解决调用 notifyItemChanged 闪烁问题,取消默认动画
             ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
@@ -234,7 +238,16 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
                     showCamera = false;
                 }
             }
-            adapter = new PictureImageGridAdapter(this, options.isGif(), showCamera, maxSelectNum, selectMode, enablePreview, enablePreviewVideo, cb_drawable, is_checked_num, type);
+            if (clickVideo) {
+                if (soundPool == null) {
+                    soundPool = new SoundPool.Builder().build();
+                    soundID = soundPool.load(mContext, R.raw.music, 1);
+                }
+            }
+
+            adapter = new PictureImageGridAdapter(this, options.isGif(), showCamera,
+                    maxSelectNum, selectMode, enablePreview, enablePreviewVideo,
+                    cb_drawable, is_checked_num, type, clickVideo, soundPool, soundID);
             recyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
             if (selectMedias.size() > 0) {
@@ -853,6 +866,10 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
         if (animation != null) {
             animation.cancel();
             animation = null;
+        }
+
+        if (soundPool != null) {
+            soundPool.stop(soundID);
         }
     }
 }
