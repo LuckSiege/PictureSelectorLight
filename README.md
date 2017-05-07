@@ -155,6 +155,7 @@ FunctionOptions options = new FunctionOptions.Builder()
         .setCheckedBoxDrawable() //自定义选择样式
         .setRecordVideoDefinition() // 视频清晰度
         .setRecordVideoSecond() // 视频秒数
+	.setVideoS(0)// 查询多少秒内的视频 单位:秒
 	.setCustomQQ_theme()// 可自定义QQ数字风格，不传就默认是蓝色风格
         .setGif()// 是否显示gif图片，默认不显示
         .setMaxB() // 压缩最大值 例如:200kb  就设置202400，202400 / 1024 = 200kb左右
@@ -172,6 +173,11 @@ FunctionOptions options = new FunctionOptions.Builder()
         .setCompressW() // 压缩宽 如果值大于图片原始宽高无效
         .setCompressH() // 压缩高 如果值大于图片原始宽高无效
         .setThemeStyle() // 设置主题样式
+	.setPicture_title_color() // 设置标题字体颜色
+        .setPicture_right_color() // 设置标题右边字体颜色
+        .setLeftBackDrawable() // 设置返回键图标
+        .setStatusBar() // 设置状态栏颜色，默认是和标题栏一致
+        .setImmersive(false)// 是否改变状态栏字体颜色(黑色) 
         .create();     
 ```
 ```
