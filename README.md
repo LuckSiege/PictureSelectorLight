@@ -264,6 +264,7 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
 ###### 新增标题栏文字颜色改变
 ###### 新增状态栏颜色单独设置
 ###### 新增底部已完成样式( 0/9 完成) 样式
+###### 新增返回图标的设置
 ###### 修复视频播放前白屏问题
 
 # 项目使用第三方库：
