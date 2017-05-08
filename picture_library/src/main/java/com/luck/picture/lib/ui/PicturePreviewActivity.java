@@ -1,6 +1,5 @@
 package com.luck.picture.lib.ui;
 
-import android.graphics.Color;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,7 +20,7 @@ import com.luck.picture.lib.dialog.OptAnimationLoader;
 import com.luck.picture.lib.dialog.SweetAlertDialog;
 import com.luck.picture.lib.entity.EventEntity;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.luck.picture.lib.flyn.Eyes;
+import com.luck.picture.lib.flyn.LightStatusBarUtils;
 import com.luck.picture.lib.model.FunctionConfig;
 import com.luck.picture.lib.observable.ImagesObservable;
 import com.luck.picture.lib.utils.ToolbarUtil;
@@ -88,7 +87,7 @@ public class PicturePreviewActivity extends PictureBaseActivity implements View.
             EventBus.getDefault().register(this);
         }
         if (isImmersive) {
-            Eyes.setStatusBarLightMode(this, Color.WHITE, false);
+            LightStatusBarUtils.setLightStatusBar(this, false);
         }
 
         if (clickVideo) {
