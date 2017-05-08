@@ -288,6 +288,7 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
 ![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/2.jpg)
 ![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/3.jpg)
 ![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/4.jpg)
+![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/blue.jpg)
 ![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/7.jpg)
 ![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/8.jpg)
 ![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/9.jpg)
