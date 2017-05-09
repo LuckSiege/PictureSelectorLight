@@ -39,15 +39,14 @@ import com.luck.picture.lib.model.FunctionConfig;
 import com.luck.picture.lib.model.LocalMediaLoader;
 import com.luck.picture.lib.model.PictureConfig;
 import com.luck.picture.lib.observable.ImagesObservable;
+import com.luck.picture.lib.rxbus2.RxBus;
+import com.luck.picture.lib.rxbus2.Subscribe;
+import com.luck.picture.lib.rxbus2.ThreadMode;
 import com.luck.picture.lib.utils.FileUtils;
 import com.luck.picture.lib.utils.ScreenUtils;
 import com.luck.picture.lib.utils.ToolbarUtil;
 import com.luck.picture.lib.utils.Utils;
 import com.luck.picture.lib.widget.MyItemAnimator;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.io.Serializable;
@@ -110,8 +109,8 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
+        if (!RxBus.getDefault().isRegistered(this)) {
+            RxBus.getDefault().register(this);
         }
         takePhoto = getIntent().getBooleanExtra(FunctionConfig.FUNCTION_TAKE, false);
         if (savedInstanceState != null) {
@@ -703,7 +702,7 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
             showToast("回调接口为空了");
         }
         EventEntity obj = new EventEntity(FunctionConfig.CLOSE_FLAG);
-        EventBus.getDefault().post(obj);
+        RxBus.getDefault().post(obj);
         if ((takePhoto && takePhotoSuccess) || (isCompress && selectMode == FunctionConfig.MODE_SINGLE)) {
             releaseCallBack();
             recycleCallBack();
@@ -768,7 +767,7 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
                 // 取消
                 clearData();
                 EventEntity obj = new EventEntity(FunctionConfig.CLOSE_FLAG);
-                EventBus.getDefault().post(obj);
+                RxBus.getDefault().post(obj);
                 finish();
                 overridePendingTransition(0, R.anim.slide_bottom_out);
                 break;
@@ -860,8 +859,8 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this);
+        if (RxBus.getDefault().isRegistered(this)) {
+            RxBus.getDefault().unregister(this);
         }
         if (animation != null) {
             animation.cancel();
