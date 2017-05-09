@@ -264,7 +264,6 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
 
 
 # 项目使用第三方库：
-###### 1.eventbus:3.0.0'
 ###### 2.glide:3.7.0
 ###### 3.rxjava:2.0.5
 ###### 4.rxandroid:2.0.1
