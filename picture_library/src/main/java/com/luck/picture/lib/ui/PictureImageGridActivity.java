@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.media.MediaMetadataRetriever;
 import android.media.SoundPool;
 import android.net.Uri;
@@ -127,10 +126,8 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
             }
             if (isCompress) {
                 // 如果单独拍照，并且没有裁剪 但压缩 这里显示一个蒙版过渡一下
+                setContentView(R.layout.picture_empty);
                 ToolbarUtil.setColorNoTranslucent(this, R.color.black);
-                TextView view = new TextView(this);
-                view.setBackgroundColor(Color.BLACK);
-                setContentView(view);
             }
         } else {
             setContentView(R.layout.picture_activity_image_grid);
