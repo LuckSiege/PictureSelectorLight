@@ -123,7 +123,11 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
             // 不等于null就代表是第一次，否则是此activity被回收过，
             // 则不重复启动拍照，针对小米等手机，拍照导致activity被回收问题
             if (savedInstanceState == null) {
-                onTakePhoto();
+                if (hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    onTakePhoto();
+                } else {
+                    requestPermission(FunctionConfig.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
+                }
             }
             if (isCompress) {
                 // 如果单独拍照，并且没有裁剪 但压缩 这里显示一个蒙版过渡一下
@@ -260,27 +264,31 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
 
     @Override
     protected void readLocalMedia() {
-        /**
-         * 根据type决定，查询本地图片或视频。
-         */
-        showPleaseDialog(getString(R.string.picture_please));
-        new LocalMediaLoader(this, type, options.isGif(), videoS).loadAllImage(new LocalMediaLoader.LocalMediaLoadListener() {
+        if (takePhoto) {
+            // 单独拍照 先判断下是否有sdCard权限
+            onTakePhoto();
+        } else {
+            /**
+             * 根据type决定，查询本地图片或视频。
+             */
+            showPleaseDialog(getString(R.string.picture_please));
+            new LocalMediaLoader(this, type, options.isGif(), videoS).loadAllImage(new LocalMediaLoader.LocalMediaLoadListener() {
 
-            @Override
-            public void loadComplete(List<LocalMediaFolder> folders) {
-                dismiss();
-                if (folders.size() > 0) {
-                    // 取最近相册或视频数据
-                    LocalMediaFolder folder = folders.get(0);
-                    images = folder.getImages();
-                    adapter.bindImagesData(images);
-                    PictureImageGridActivity.this.folders = folders;
-                    ImagesObservable.getInstance().saveLocalFolders(folders);
-                    ImagesObservable.getInstance().notifyFolderObserver(folders);
+                @Override
+                public void loadComplete(List<LocalMediaFolder> folders) {
+                    dismiss();
+                    if (folders.size() > 0) {
+                        // 取最近相册或视频数据
+                        LocalMediaFolder folder = folders.get(0);
+                        images = folder.getImages();
+                        adapter.bindImagesData(images);
+                        PictureImageGridActivity.this.folders = folders;
+                        ImagesObservable.getInstance().saveLocalFolders(folders);
+                        ImagesObservable.getInstance().notifyFolderObserver(folders);
+                    }
                 }
-            }
-        });
-
+            });
+        }
     }
 
 
