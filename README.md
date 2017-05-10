@@ -73,6 +73,17 @@ dependencies {
 
 ```
 
+项目根目录build.gradle加入 
+
+```
+allprojects {
+   repositories {
+      jcenter()
+      maven { url 'https://jitpack.io' }
+   }
+}
+```
+
 方式二 maven引入 
 
 step 1.
@@ -93,16 +104,6 @@ step 2.
 </dependency>
 
 
-```
-项目根目录build.gradle加入 
-
-```
-allprojects {
-   repositories {
-      jcenter()
-      maven { url 'https://jitpack.io' }
-   }
-}
 ```
 
 ******常见错误*******
