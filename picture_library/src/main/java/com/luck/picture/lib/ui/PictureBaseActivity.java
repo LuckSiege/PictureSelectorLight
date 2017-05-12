@@ -91,11 +91,11 @@ public class PictureBaseActivity extends FragmentActivity {
         maxSelectNum = options.getMaxSelectNum();
         minSelectNum = options.getMinSelectNum();
         leftDrawable = options.getLeftBackDrawable();
-        statusBar = options.getStatusBar();
         title_color = options.getPicture_title_color();
         right_color = options.getPicture_right_color();
         enablePreviewVideo = options.isPreviewVideo();
         backgroundColor = options.getThemeStyle();
+        statusBar = options.getStatusBar();
         cb_drawable = options.getCheckedBoxDrawable();
         qq_theme = options.getCustomQQ_theme();
         isNumComplete = options.isNumComplete();
