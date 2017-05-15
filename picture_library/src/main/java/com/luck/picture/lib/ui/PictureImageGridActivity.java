@@ -177,9 +177,6 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
             // 获取图片
             images = ImagesObservable.getInstance().readLocalMedias();
 
-            if (selectMedias == null) {
-                selectMedias = new ArrayList<>();
-            }
             if (enablePreview && selectMode == FunctionConfig.MODE_MULTIPLE) {
                 if (type == FunctionConfig.TYPE_VIDEO) {
                     // 如果是视频不能预览
@@ -242,7 +239,7 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
                     cb_drawable, is_checked_num, type, clickVideo, soundPool, soundID);
             recyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-            if (selectMedias.size() > 0) {
+            if (selectMedias != null && selectMedias.size() > 0) {
                 ChangeImageNumber(selectMedias);
                 adapter.bindSelectImages(selectMedias);
             }
