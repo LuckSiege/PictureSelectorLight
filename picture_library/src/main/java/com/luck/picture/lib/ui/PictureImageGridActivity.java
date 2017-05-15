@@ -129,11 +129,9 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
                     requestPermission(FunctionConfig.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
                 }
             }
-            if (isCompress) {
-                // 如果单独拍照，并且没有裁剪 但压缩 这里显示一个蒙版过渡一下
-                setContentView(R.layout.picture_empty);
-                ToolbarUtil.setColorNoTranslucent(this, R.color.black);
-            }
+            // 如果单独拍照，这里显示一个蒙版过渡一下
+            setContentView(R.layout.picture_empty);
+            ToolbarUtil.setColorNoTranslucent(this, R.color.black);
         } else {
             setContentView(R.layout.picture_activity_image_grid);
             recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
