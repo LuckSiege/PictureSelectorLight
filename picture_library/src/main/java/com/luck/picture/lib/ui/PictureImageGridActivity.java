@@ -174,15 +174,8 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
 
             String folderName = getIntent().getStringExtra(FunctionConfig.FOLDER_NAME);
             folders = ImagesObservable.getInstance().readLocalFolders();
-            if (folders == null) {
-                folders = new ArrayList<>();
-            }
-
             // 获取图片
             images = ImagesObservable.getInstance().readLocalMedias();
-            if (images == null) {
-                images = new ArrayList<>();
-            }
 
             if (selectMedias == null) {
                 selectMedias = new ArrayList<>();
