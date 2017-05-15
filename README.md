@@ -68,7 +68,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v1.0.8'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v1.0.9'
 }
 
 ```
@@ -100,7 +100,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v1.0.8</version>
+   <version>v1.0.9</version>
 </dependency>
 
 
@@ -261,6 +261,10 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
     
 ```
 # 更新日志：
+###### 版本 v1.0.9
+###### 修复沉浸式状态栏问题
+
+# 历史版本：
 ###### 版本 v1.0.8
 ###### 修复6.0手机单独拍照无权限闪退问题
 ###### 修复SoundPool在低于sdk21闪退问题
@@ -268,7 +272,6 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
 ###### 修复三星SM A9100单独拍照闪退问题
 ###### 移除eventbus 3.0
 
-# 历史版本：
 ###### 版本 v1.0.7
 ###### 修复三星s6标题栏遮挡问题
 
