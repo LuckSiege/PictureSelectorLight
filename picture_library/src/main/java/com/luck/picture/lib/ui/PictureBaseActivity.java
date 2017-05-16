@@ -18,7 +18,6 @@ import com.luck.picture.lib.flyn.LightStatusBarUtils;
 import com.luck.picture.lib.model.FunctionConfig;
 import com.luck.picture.lib.model.FunctionOptions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static android.R.attr.targetSdkVersion;

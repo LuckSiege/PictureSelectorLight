@@ -373,6 +373,9 @@ public class FunctionOptions implements Serializable {
     }
 
     public List<LocalMedia> getSelectMedia() {
+        if (selectMedia == null){
+            selectMedia = new ArrayList<>();
+        }
         return selectMedia;
     }
 
