@@ -283,6 +283,12 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
 ###### 5.PhotoView:1.2.4
 ###### 6.luban
 
+# 混淆配置
+```
+   -keep class com.luck.picture.lib.** { *; }
+   
+```
+
 # 兼容性测试：
 ******腾讯优测-深度测试-通过率达到100%******
 
