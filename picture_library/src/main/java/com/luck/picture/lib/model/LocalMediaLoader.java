@@ -103,9 +103,10 @@ public class LocalMediaLoader {
             @Override
             public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
                 try {
-                    ArrayList<LocalMediaFolder> imageFolders = new ArrayList<LocalMediaFolder>();
+                    List<LocalMediaFolder> imageFolders = new ArrayList<LocalMediaFolder>();
                     LocalMediaFolder allImageFolder = new LocalMediaFolder();
                     List<LocalMedia> allImages = new ArrayList<LocalMedia>();
+                    index = 0;
                     if (data != null) {
                         int count = data.getCount();
                         if (count > 0) {

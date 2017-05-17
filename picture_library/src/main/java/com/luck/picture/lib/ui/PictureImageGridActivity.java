@@ -261,18 +261,15 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
 
                 @Override
                 public void loadComplete(List<LocalMediaFolder> folders) {
-                    // 如果是拍照成功后，不重新获取相册因为手动添加了新照片
-                    if (!takePhotoSuccess) {
-                        dismiss();
-                        if (folders.size() > 0) {
-                            // 取最近相册或视频数据
-                            LocalMediaFolder folder = folders.get(0);
-                            images = folder.getImages();
-                            adapter.bindImagesData(images);
-                            PictureImageGridActivity.this.folders = folders;
-                            ImagesObservable.getInstance().saveLocalFolders(folders);
-                            ImagesObservable.getInstance().notifyFolderObserver(folders);
-                        }
+                    dismiss();
+                    if (folders.size() > 0) {
+                        // 取最近相册或视频数据
+                        LocalMediaFolder folder = folders.get(0);
+                        images = folder.getImages();
+                        adapter.bindImagesData(images);
+                        PictureImageGridActivity.this.folders = folders;
+                        ImagesObservable.getInstance().saveLocalFolders(folders);
+                        ImagesObservable.getInstance().notifyFolderObserver(folders);
                     }
                 }
             });
