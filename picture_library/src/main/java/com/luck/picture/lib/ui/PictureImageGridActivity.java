@@ -238,7 +238,6 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
                     maxSelectNum, selectMode, enablePreview, enablePreviewVideo,
                     cb_drawable, is_checked_num, type, clickVideo, soundPool, soundID);
             recyclerView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
             if (selectMedias != null && selectMedias.size() > 0) {
                 ChangeImageNumber(selectMedias);
                 adapter.bindSelectImages(selectMedias);
