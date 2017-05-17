@@ -36,6 +36,7 @@ import com.luck.picture.lib.entity.EventEntity;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.entity.LocalMediaFolder;
 import com.luck.picture.lib.model.FunctionConfig;
+import com.luck.picture.lib.model.FunctionOptions;
 import com.luck.picture.lib.model.LocalMediaLoader;
 import com.luck.picture.lib.model.PictureConfig;
 import com.luck.picture.lib.observable.ImagesObservable;
@@ -113,10 +114,7 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
             RxBus.getDefault().register(this);
         }
         takePhoto = getIntent().getBooleanExtra(FunctionConfig.FUNCTION_TAKE, false);
-        if (savedInstanceState != null) {
-            cameraPath = savedInstanceState.getString(FunctionConfig.BUNDLE_CAMERA_PATH);
-            takePhoto = savedInstanceState.getBoolean(FunctionConfig.FUNCTION_TAKE);
-        }
+        getOnSaveValues(savedInstanceState);
         // 单独拍照
         if (takePhoto) {
             //如果savedInstanceState
@@ -263,15 +261,18 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
 
                 @Override
                 public void loadComplete(List<LocalMediaFolder> folders) {
-                    dismiss();
-                    if (folders.size() > 0) {
-                        // 取最近相册或视频数据
-                        LocalMediaFolder folder = folders.get(0);
-                        images = folder.getImages();
-                        adapter.bindImagesData(images);
-                        PictureImageGridActivity.this.folders = folders;
-                        ImagesObservable.getInstance().saveLocalFolders(folders);
-                        ImagesObservable.getInstance().notifyFolderObserver(folders);
+                    // 如果是拍照成功后，不重新获取相册因为手动添加了新照片
+                    if (!takePhotoSuccess) {
+                        dismiss();
+                        if (folders.size() > 0) {
+                            // 取最近相册或视频数据
+                            LocalMediaFolder folder = folders.get(0);
+                            images = folder.getImages();
+                            adapter.bindImagesData(images);
+                            PictureImageGridActivity.this.folders = folders;
+                            ImagesObservable.getInstance().saveLocalFolders(folders);
+                            ImagesObservable.getInstance().notifyFolderObserver(folders);
+                        }
                     }
                 }
             });
@@ -706,11 +707,29 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
         overridePendingTransition(0, R.anim.slide_bottom_out);
     }
 
+    /**
+     * 取拍照时 此activity被暂时回收存储的值
+     *
+     * @param savedInstanceState
+     */
+    private void getOnSaveValues(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            cameraPath = savedInstanceState.getString(FunctionConfig.BUNDLE_CAMERA_PATH);
+            takePhoto = savedInstanceState.getBoolean(FunctionConfig.FUNCTION_TAKE);
+            takePhotoSuccess = savedInstanceState.getBoolean(FunctionConfig.TAKE_PHOTO_SUCCESS);
+            options = (FunctionOptions) savedInstanceState.getSerializable(FunctionConfig.EXTRA_THIS_CONFIG);
+            isCompress = options.isCompress();
+            selectMode = options.getSelectMode();
+        }
+    }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString(FunctionConfig.BUNDLE_CAMERA_PATH, cameraPath);
         outState.putBoolean(FunctionConfig.FUNCTION_TAKE, takePhoto);
+        outState.putBoolean(FunctionConfig.TAKE_PHOTO_SUCCESS, takePhotoSuccess);
+        outState.putSerializable(FunctionConfig.EXTRA_THIS_CONFIG, options);
     }
 
 
