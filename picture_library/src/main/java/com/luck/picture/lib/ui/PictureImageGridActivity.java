@@ -593,6 +593,7 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
             // 取消拍照
             if (takePhoto && !takePhotoSuccess) {
                 recycleCallBack();
+                releaseCallBack();
             }
         }
     }
@@ -713,6 +714,7 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
             cameraPath = savedInstanceState.getString(FunctionConfig.BUNDLE_CAMERA_PATH);
             takePhoto = savedInstanceState.getBoolean(FunctionConfig.FUNCTION_TAKE);
             takePhotoSuccess = savedInstanceState.getBoolean(FunctionConfig.TAKE_PHOTO_SUCCESS);
+            takePhotoSuccess = true;
             options = (FunctionOptions) savedInstanceState.getSerializable(FunctionConfig.EXTRA_THIS_CONFIG);
             isCompress = options.isCompress();
             selectMode = options.getSelectMode();
