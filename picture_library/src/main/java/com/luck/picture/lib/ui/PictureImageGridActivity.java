@@ -675,22 +675,26 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
         for (LocalMedia media : images) {
             result.add(media);
         }
-        PictureConfig.OnSelectResultCallback resultCallback = PictureConfig.getInstance().getResultCallback();
-        if (resultCallback != null) {
-            switch (selectMode) {
-                case FunctionConfig.MODE_SINGLE:
-                    // 单选
-                    if (result.size() > 0) {
-                        resultCallback.onSelectSuccess(result.get(0));
-                    }
-                    break;
-                case FunctionConfig.MODE_MULTIPLE:
-                    // 多选
-                    resultCallback.onSelectSuccess(result);
-                    break;
-            }
-            releaseCallBack();
+        if (takePhoto) {
+            // 单独拍照在手机内存不足时会让单例回收，导致回调失败，所以单独拍照采用setResult()返回图片
+            setResult(RESULT_OK, new Intent().putExtra(FunctionConfig.EXTRA_RESULT, (Serializable) result));
         } else {
+            PictureConfig.OnSelectResultCallback resultCallback = PictureConfig.getResultCallback();
+            if (resultCallback != null) {
+                switch (selectMode) {
+                    case FunctionConfig.MODE_SINGLE:
+                        // 单选
+                        if (result.size() > 0) {
+                            resultCallback.onSelectSuccess(result.get(0));
+                        }
+                        break;
+                    case FunctionConfig.MODE_MULTIPLE:
+                        // 多选
+                        resultCallback.onSelectSuccess(result);
+                        break;
+                }
+                releaseCallBack();
+            }
         }
         EventEntity obj = new EventEntity(FunctionConfig.CLOSE_FLAG);
         RxBus.getDefault().post(obj);

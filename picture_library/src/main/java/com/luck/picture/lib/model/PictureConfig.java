@@ -40,9 +40,9 @@ public class PictureConfig {
 
     }
 
-    public OnSelectResultCallback resultCallback;
+    public static OnSelectResultCallback resultCallback;
 
-    public OnSelectResultCallback getResultCallback() {
+    public static OnSelectResultCallback getResultCallback() {
         return resultCallback;
     }
 
@@ -72,17 +72,15 @@ public class PictureConfig {
     /**
      * start to camera、preview、crop
      */
-    public void startOpenCamera(Activity activity, OnSelectResultCallback resultCall) {
+    public void startOpenCamera(Activity activity) {
         if (options == null) {
             options = new FunctionOptions.Builder().create();
         }
         Intent intent = new Intent(activity, PictureImageGridActivity.class);
         intent.putExtra(FunctionConfig.EXTRA_THIS_CONFIG, options);
         intent.putExtra(FunctionConfig.FUNCTION_TAKE, true);
-        activity.startActivity(intent);
+        activity.startActivityForResult(intent,FunctionConfig.CAMERA_RESULT);
         activity.overridePendingTransition(R.anim.fade, R.anim.hold);
-        // 绑定图片接口回调函数事件
-        resultCallback = resultCall;
     }
 
     /**
@@ -142,6 +140,7 @@ public class PictureConfig {
         /**
          * 处理成功
          * 多选
+         *
          * @param resultList
          */
         void onSelectSuccess(List<LocalMedia> resultList);
@@ -149,6 +148,7 @@ public class PictureConfig {
         /**
          * 处理成功
          * 单选
+         *
          * @param media
          */
         void onSelectSuccess(LocalMedia media);
