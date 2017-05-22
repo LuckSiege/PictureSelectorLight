@@ -871,7 +871,7 @@ public class PictureImageGridActivity extends PictureBaseActivity implements Vie
      * 释放回调 导致的内存泄漏
      */
     protected void releaseCallBack() {
-        PictureConfig.getInstance().resultCallback = null;
+        PictureConfig.resultCallback = null;
     }
 
     @Override
