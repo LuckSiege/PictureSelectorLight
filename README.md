@@ -226,7 +226,7 @@ public class App extends Application {
 ```
 PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(position).getPath());
 ```
-******图片回调完成结果返回******
+******图片回调完成结果返回 注意:单独拍照不走此回调，往下看↵******
 ```
   private PictureConfig.OnSelectResultCallback resultCallback = new PictureConfig.OnSelectResultCallback() {
         @Override
