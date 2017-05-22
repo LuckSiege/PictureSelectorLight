@@ -260,7 +260,7 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
     };
     
 ```
-******单独拍照回调*****
+******单独拍照回调******
 ```
     /**
      * 単独拍照图片回调
