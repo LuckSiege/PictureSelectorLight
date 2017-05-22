@@ -211,10 +211,10 @@ public class App extends Application {
 
 ******单独启动拍照或视频 根据type自动识别******       
 ```
- PictureConfig.getInstance().init(options).startOpenCamera(mContext, resultCallback);
+ PictureConfig.getInstance().init(options).startOpenCamera(mContext);
  
  或默认配置
- PictureConfig.getInstance().startOpenCamera(mContext, resultCallback);
+ PictureConfig.getInstance().startOpenCamera(mContext);
 ```
 ******预览图片******       
 ```
@@ -260,6 +260,32 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
     };
     
 ```
+******单独拍照回调*****
+```
+    /**
+     * 単独拍照图片回调
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == FunctionConfig.CAMERA_RESULT) {
+                if (data != null) {
+                    selectMedia = (List<LocalMedia>) data.getSerializableExtra(FunctionConfig.EXTRA_RESULT);
+                    if (selectMedia != null) {
+                        adapter.setList(selectMedia);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        }
+    }
+```
+
 # 更新日志：
 
 ###### 版本 v1.1.4
