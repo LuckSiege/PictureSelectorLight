@@ -311,11 +311,11 @@ PictureConfig.getInstance().externalPictureVideo(mContext, selectMedia.get(posit
 ###### 移除eventbus 3.0
 
 # 项目使用第三方库：
-###### 2.glide:3.7.0
-###### 3.rxjava:2.0.5
-###### 4.rxandroid:2.0.1
-###### 5.PhotoView:1.2.4
-###### 6.luban
+###### 1.glide:3.7.0
+###### 2.rxjava:2.0.5
+###### 3.rxandroid:2.0.1
+###### 4.PhotoView:1.2.4
+###### 5.luban
 
 # 混淆配置
 ```
