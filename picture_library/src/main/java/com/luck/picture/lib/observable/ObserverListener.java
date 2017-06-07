@@ -1,6 +1,5 @@
 package com.luck.picture.lib.observable;
 
-
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.entity.LocalMediaFolder;
 

@@ -2,11 +2,15 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <size android:height="100dp" android:width="100dp"></size>
-            <solid android:color="@color/grey"></solid>
+            <size
+                android:width="100dp"
+                android:height="100dp"></size>
+            <solid android:color="@color/color_69"></solid>
         </shape>
     </item>
     <item>
-        <bitmap android:src="@drawable/ic_placeholder" android:gravity="center" ></bitmap>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/ic_placeholder"></bitmap>
     </item>
 </layer-list>

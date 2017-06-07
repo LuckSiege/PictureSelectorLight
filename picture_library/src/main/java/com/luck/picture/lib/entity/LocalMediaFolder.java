@@ -16,26 +16,10 @@ public class LocalMediaFolder implements Serializable {
     private String path;
     private String firstImagePath;
     private int imageNum;
-    private boolean isChecked;
     private int checkedNum;
-    private int type;
+    private boolean isChecked;
     private List<LocalMedia> images = new ArrayList<LocalMedia>();
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public int getCheckedNum() {
-        return checkedNum;
-    }
-
-    public void setCheckedNum(int checkedNum) {
-        this.checkedNum = checkedNum;
-    }
 
     public boolean isChecked() {
         return isChecked;
@@ -78,10 +62,21 @@ public class LocalMediaFolder implements Serializable {
     }
 
     public List<LocalMedia> getImages() {
+        if (images == null) {
+            images = new ArrayList<>();
+        }
         return images;
     }
 
     public void setImages(List<LocalMedia> images) {
         this.images = images;
+    }
+
+    public int getCheckedNum() {
+        return checkedNum;
+    }
+
+    public void setCheckedNum(int checkedNum) {
+        this.checkedNum = checkedNum;
     }
 }

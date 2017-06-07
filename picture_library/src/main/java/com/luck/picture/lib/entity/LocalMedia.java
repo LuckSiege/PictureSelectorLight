@@ -1,88 +1,68 @@
 package com.luck.picture.lib.entity;
 
-
 import java.io.Serializable;
 
 /**
  * author：luck
  * project：PictureSelector
- * package：com.luck.picture.entity
+ * package：com.luck.picture.lib.entity
+ * describe：for PictureSelector media entity.
  * email：893855882@qq.com
- * data：16/12/31
+ * data：2017/5/24
  */
+
 public class LocalMedia implements Serializable {
     private String path;
     private String compressPath;
     private long duration;
-    private long lastUpdateAt;
     private boolean isChecked;
     public int position;
     private int num;
-    private int type;
+    private int mimeType;
+    private String pictureType;
     private boolean compressed;
+    private int width;
+    private int height;
 
+    public LocalMedia() {
 
-    public LocalMedia(String path, long lastUpdateAt, long duration, int type) {
-        this.path = path;
-        this.duration = duration;
-        this.lastUpdateAt = lastUpdateAt;
-        this.type = type;
     }
 
-    public LocalMedia(String path, long duration, long lastUpdateAt,
-                      boolean isChecked, int position, int num, int type) {
+    public LocalMedia(String path, long duration, int mimeType, String pictureType) {
         this.path = path;
         this.duration = duration;
-        this.lastUpdateAt = lastUpdateAt;
+        this.mimeType = mimeType;
+        this.pictureType = pictureType;
+    }
+
+    public LocalMedia(String path, long duration, int mimeType, String pictureType, int width, int height) {
+        this.path = path;
+        this.duration = duration;
+        this.mimeType = mimeType;
+        this.pictureType = pictureType;
+        this.width = width;
+        this.height = height;
+    }
+
+    public LocalMedia(String path, long duration,
+                      boolean isChecked, int position, int num, int mimeType) {
+        this.path = path;
+        this.duration = duration;
         this.isChecked = isChecked;
         this.position = position;
         this.num = num;
-        this.type = type;
+        this.mimeType = mimeType;
     }
 
-    public LocalMedia() {
+    public String getPictureType() {
+        if (pictureType.equals("") || pictureType == null) {
+            pictureType = "image/jpeg";
+        }
+        return pictureType;
     }
 
-
-    public boolean isCompressed() {
-        return compressed;
-    }
-
-    public void setCompressed(boolean compressed) {
-        this.compressed = compressed;
-    }
-
-    public String getCompressPath() {
-        return compressPath;
-    }
-
-    public void setCompressPath(String compressPath) {
-        this.compressPath = compressPath;
-    }
-
-    public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-
-    public boolean isChecked() {
-        return isChecked;
-    }
-
-    public void setChecked(boolean checked) {
-        isChecked = checked;
+    public void setPictureType(String pictureType) {
+        this.pictureType = pictureType;
     }
 
     public String getPath() {
@@ -93,6 +73,14 @@ public class LocalMedia implements Serializable {
         this.path = path;
     }
 
+    public String getCompressPath() {
+        return compressPath;
+    }
+
+    public void setCompressPath(String compressPath) {
+        this.compressPath = compressPath;
+    }
+
     public long getDuration() {
         return duration;
     }
@@ -101,27 +89,59 @@ public class LocalMedia implements Serializable {
         this.duration = duration;
     }
 
-    public long getLastUpdateAt() {
-        return lastUpdateAt;
+    public boolean isChecked() {
+        return isChecked;
     }
 
-    public void setLastUpdateAt(long lastUpdateAt) {
-        this.lastUpdateAt = lastUpdateAt;
-    }
-
-    public boolean getIsChecked() {
-        return this.isChecked;
-    }
-
-    public void setIsChecked(boolean isChecked) {
-        this.isChecked = isChecked;
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 
     public int getPosition() {
-        return this.position;
+        return position;
     }
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public int getMimeType() {
+        return mimeType;
+    }
+
+    public void setMimeType(int mimeType) {
+        this.mimeType = mimeType;
+    }
+
+    public boolean isCompressed() {
+        return compressed;
+    }
+
+    public void setCompressed(boolean compressed) {
+        this.compressed = compressed;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }

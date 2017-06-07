@@ -17,9 +17,9 @@ import java.util.List;
 public class CompressImageOptions implements CompressInterface {
     private CompressImageUtil compressImageUtil;
     private List<LocalMedia> images;
-    private CompressListener listener;
+    private CompressInterface.CompressListener listener;
 
-    public static CompressInterface compress(Context context, CompressConfig config, List<LocalMedia> images, CompressListener listener) {
+    public static CompressInterface compress(Context context, CompressConfig config, List<LocalMedia> images, CompressInterface.CompressListener listener) {
         if (config.getLubanOptions() != null) {
             return new LuBanCompress(context, config, images, listener);
         } else {
@@ -27,7 +27,7 @@ public class CompressImageOptions implements CompressInterface {
         }
     }
 
-    private CompressImageOptions(Context context, CompressConfig config, List<LocalMedia> images, CompressListener listener) {
+    private CompressImageOptions(Context context, CompressConfig config, List<LocalMedia> images, CompressInterface.CompressListener listener) {
         compressImageUtil = new CompressImageUtil(context, config);
         this.images = images;
         this.listener = listener;

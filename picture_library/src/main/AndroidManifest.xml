@@ -1,43 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="com.luck.picture.lib">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
         <activity
-            android:name="com.luck.picture.lib.ui.PictureAlbumDirectoryActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleTask"
+            android:name=".PictureSelectorActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Slider" />
+            android:theme="@style/activity.Theme"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.luck.picture.lib.ui.PictureImageGridActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Slider" />
+            android:name=".PictureBaseActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.luck.picture.lib.ui.PicturePreviewActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Slider" />
+            android:name=".PicturePreviewActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.luck.picture.lib.ui.PictureVideoPlayActivity"
+            android:name=".PictureVideoPlayActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="sensor" />
-
         <activity
-            android:name="com.luck.picture.lib.ui.PictureExternalPreviewActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Slider" />
+            android:name=".PictureExternalPreviewActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

@@ -14,6 +14,7 @@ import java.util.List;
 
 public class EventEntity implements Serializable {
     public int what;
+    public int position;
     public List<LocalMedia> medias = new ArrayList<>();
 
     public EventEntity() {
@@ -28,6 +29,19 @@ public class EventEntity implements Serializable {
     public EventEntity(int what, List<LocalMedia> medias) {
         super();
         this.what = what;
+        this.medias = medias;
+    }
+
+    public EventEntity(int what, int position) {
+        super();
+        this.what = what;
+        this.position = position;
+    }
+
+    public EventEntity(int what, List<LocalMedia> medias, int position) {
+        super();
+        this.what = what;
+        this.position = position;
         this.medias = medias;
     }
 }

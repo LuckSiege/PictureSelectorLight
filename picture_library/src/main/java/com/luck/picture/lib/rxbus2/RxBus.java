@@ -62,7 +62,7 @@ public class RxBus {
      * @param eventType 事件类型
      * @return return
      */
-    private <T> Flowable<T> toObservable(Class<T> eventType) {
+    public  <T> Flowable<T> toObservable(Class<T> eventType) {
         return bus.toFlowable(BackpressureStrategy.BUFFER).ofType(eventType);
     }
 
@@ -258,6 +258,7 @@ public class RxBus {
             }
         }
     }
+
 
     /**
      * 是否注册

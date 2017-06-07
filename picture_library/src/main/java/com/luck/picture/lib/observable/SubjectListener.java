@@ -1,11 +1,6 @@
 package com.luck.picture.lib.observable;
 
 
-import com.luck.picture.lib.entity.LocalMedia;
-import com.luck.picture.lib.entity.LocalMediaFolder;
-
-import java.util.List;
-
 /**
  * author：luck
  * project：PictureSelector
@@ -15,10 +10,6 @@ import java.util.List;
  */
 public interface SubjectListener {
     void add(ObserverListener observerListener);
-
-    void notifyFolderObserver(List<LocalMediaFolder> folders);
-
-    void notifySelectLocalMediaObserver(List<LocalMedia> medias);
 
     void remove(ObserverListener observerListener);
 }
