@@ -1,4 +1,4 @@
-package com.luck.picture.util;
+package com.luck.pictureselector;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
