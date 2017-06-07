@@ -144,24 +144,23 @@ PhotoView 库冲突，可以删除自己项目中引用的，Picture_library中�
 ```
 // 进入相册 以下是例子：不需要的api可以不写
    PictureSelector.create(MainActivity.this)
-         .openGallery(chooseMode)// 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()
-         .theme(themeId)// 主题样式设置 具体参考 values/styles
-         .maxSelectNum(maxSelectNum)// 最大图片选择数量
-         .minSelectNum(1)// 最小选择数量
-         .selectionMode(cb_choose_mode.isChecked() ?
-         PictureConfig.MULTIPLE : PictureConfig.SINGLE)// 多选 or 单选
-         .previewImage(cb_preview_img.isChecked())// 是否可预览图片
-         .previewVideo(cb_preview_video.isChecked())// 是否可预览视频
-         .compressGrade(Luban.THIRD_GEAR)// luban压缩档次，默认3档 Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
-         .isCamera(cb_isCamera.isChecked())// 是否显示拍照按钮
-         .compress(cb_compress.isChecked())// 是否压缩
-         .compressMode(compressMode)//系统自带 or 鲁班压缩 PictureConfig.SYSTEM_COMPRESS_MODE or 					LUBAN_COMPRESS_MODE
-         .glideOverride(160, 160)// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
-         .isGif(cb_isGif.isChecked())// 是否显示gif图片
-         .openClickSound(cb_voice.isChecked())// 是否开启点击声音
-         .selectionMedia(selectList)// 是否传入已选图片
-         //.previewEggs(false)// 预览图片时 是否增强左右滑动图片体验(图片滑动一半即可看到上一张是否选中)
-         //.isRemove(true)//是否移除图片列表已损坏的图片
+         .openGallery()// 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()
+         .theme()// 主题样式设置 具体参考 values/styles
+         .maxSelectNum()// 最大图片选择数量
+         .minSelectNum()// 最小选择数量
+         .selectionMode()// 多选 or 单选
+         .previewImage()// 是否可预览图片
+         .previewVideo()// 是否可预览视频
+         .compressGrade()// luban压缩档次，默认3档 Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
+         .isCamera()// 是否显示拍照按钮
+         .compress()// 是否压缩
+         .compressMode()//系统自带 or 鲁班压缩 PictureConfig.SYSTEM_COMPRESS_MODE or LUBAN_COMPRESS_MODE
+         .glideOverride()// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
+         .isGif()// 是否显示gif图片
+         .openClickSound()// 是否开启点击声音
+         .selectionMedia()// 是否传入已选图片
+         //.previewEggs()// 预览图片时 是否增强左右滑动图片体验(图片滑动一半即可看到上一张是否选中)
+         //.isRemove()//是否移除图片列表已损坏的图片
          //.compressMaxKB()//压缩最大值kb compressGrade()为Luban.CUSTOM_GEAR有效
          //.compressWH() // 压缩宽高比 compressGrade()为Luban.CUSTOM_GEAR有效
          //.videoQuality()// 视频录制质量 0 or 1
