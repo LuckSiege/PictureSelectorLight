@@ -257,7 +257,7 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ```
 ******图片回调完成结果返回******
 ```
-@Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
@@ -265,7 +265,10 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
                 case PictureConfig.CHOOSE_REQUEST:
                     // 图片选择结果回调
                     selectList = PictureSelector.obtainMultipleResult(data);
-                    adapter.setList(selectList);
+                    // 例如 LocalMedia 里面返回两种path
+                    // 1.media.getPath(); 为原图path
+                    // 2.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true 
+                    adapter.setList(selectList);
                     adapter.notifyDataSetChanged();
                     DebugUtil.i(TAG, "onActivityResult:" + selectList.size());
                     break;
