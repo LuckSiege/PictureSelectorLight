@@ -165,8 +165,8 @@ PhotoView 库冲突，可以删除自己项目中引用的，Picture_library中�
          //.compressWH() // 压缩宽高比 compressGrade()为Luban.CUSTOM_GEAR有效
          //.videoQuality()// 视频录制质量 0 or 1
          //.videoSecond()//显示多少秒以内的视频
-	 //.recordVideoSecond()//录制视频秒数
-         .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
+	 //.recordVideoSecond()//录制视频秒数 默认60s
+         .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
 ```
 
 ******PictureSelector 2.0 主题配置****** 
