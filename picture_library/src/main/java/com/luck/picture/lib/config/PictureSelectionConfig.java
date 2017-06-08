@@ -46,7 +46,6 @@ public final class PictureSelectionConfig implements Serializable {
     public boolean checkNumMode;
     public boolean openClickSound;
     public boolean previewEggs;
-    public boolean isRemove = true;
 
     public List<LocalMedia> selectionMedias = new ArrayList<>();
 
@@ -77,7 +76,6 @@ public final class PictureSelectionConfig implements Serializable {
         openClickSound = false;
         previewEggs = false;
         selectionMedias = new ArrayList<>();
-        isRemove = true;
         DebugUtil.i("*******", "reset PictureSelectionConfig");
     }
 

@@ -42,7 +42,6 @@ import com.luck.picture.lib.tools.LightStatusBarUtils;
 import com.luck.picture.lib.tools.PictureFileUtils;
 import com.luck.picture.lib.tools.ScreenUtils;
 import com.luck.picture.lib.tools.StringUtils;
-import com.luck.picture.lib.widget.CustomToast;
 import com.luck.picture.lib.widget.FolderPopWindow;
 import com.luck.picture.lib.widget.PhotoPopupWindow;
 
@@ -417,9 +416,6 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
         picture_title.setText(folderName);
         adapter.bindImagesData(images);
         folderWindow.dismiss();
-        if (images.size() == 0) {
-            new CustomToast().showToast(this, getString(R.string.picture_warning));
-        }
     }
 
     @Override

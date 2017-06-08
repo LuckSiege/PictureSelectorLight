@@ -120,16 +120,6 @@ public class PictureSelectionModel {
         return this;
     }
 
-    /**
-     * @param isRemove Load failed image or video Whether remove Picture list
-     *                 default true
-     * @return
-     */
-    public PictureSelectionModel isRemove(boolean isRemove) {
-        selectionConfig.isRemove = isRemove;
-        return this;
-    }
-
 
     /**
      * @param compressMode compress mode and  PictureConfig.SYSTEM_COMPRESS_MODE or PictureConfig.LUBAN_COMPRESS_MODE
