@@ -137,7 +137,23 @@ step 2.
 
 问题三：
 PhotoView 库冲突，可以删除自己项目中引用的，Picture_library中已经引用过
+com.github.chrisbanes.photoview:library:1.2.4
  
+问题四：
+经测试在小米部分低端机中，Fragment调用PictureSelector 2.0 拍照有时内存不足会暂时回收activity,
+导致其fragment会重新创建 建议在fragment所依赖的activity加上如下代码:
+if (savedInstanceState == null) {
+      // 添加显示第一个fragment
+      	fragment = new PhotoFragment();
+      		getSupportFragmentManager().beginTransaction().add(R.id.tab_content, fragment,
+                    PictureConfig.FC_TAG).show(fragment)
+                    .commit();
+     } else {
+      	fragment = (PhotoFragment) getSupportFragmentManager()
+          .findFragmentByTag(PictureConfig.FC_TAG);
+}
+这里就是如果是被回收时，则不重新创建 通过tag取出fragment的实例。
+
 ```
 
 ******相册启动构造方法******
@@ -168,7 +184,12 @@ PhotoView 库冲突，可以删除自己项目中引用的，Picture_library中�
 	 //.recordVideoSecond()//录制视频秒数 默认60s
          .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
 ```
-
+******清除PictureSelector 2.0缓存******
+```
+ //包括压缩后的缓存，要在上传成功后调用，注意：需要系统sd卡权限 
+ PictureFileUtils.deleteCacheDirFile(MainActivity.this);
+ 
+```
 ******PictureSelector 2.0 主题配置****** 
 
 ```
@@ -257,7 +278,7 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ```
 ******图片回调完成结果返回******
 ```
-@Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
@@ -265,7 +286,10 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
                 case PictureConfig.CHOOSE_REQUEST:
                     // 图片选择结果回调
                     selectList = PictureSelector.obtainMultipleResult(data);
-                    adapter.setList(selectList);
+                    // 例如 LocalMedia 里面返回两种path
+                    // 1.media.getPath(); 为原图path
+                    // 2.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true 
+                    adapter.setList(selectList);
                     adapter.notifyDataSetChanged();
                     DebugUtil.i(TAG, "onActivityResult:" + selectList.size());
                     break;
