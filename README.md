@@ -68,7 +68,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.0'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.1'
 }
 
 ```
