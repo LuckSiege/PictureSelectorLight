@@ -1,7 +1,6 @@
 package com.luck.picture.lib;
 
 import android.Manifest;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -558,6 +557,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
                 case PictureConfig.REQUEST_CAMERA:
                     // on take photo success
                     final File file = new File(cameraPath);
+                    sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
                     String toType = PictureMimeType.fileToType(file);
                     DebugUtil.i(TAG, "camera result:" + toType);
                     int degree = PictureFileUtils.readPictureDegree(file.getAbsolutePath());
@@ -566,32 +566,10 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
                     media = new LocalMedia();
                     media.setPath(cameraPath);
                     List<LocalMedia> result = new ArrayList<>();
-                    int duration = 0;
-                    String pictureType;
-
-                    // 保存图片至手机，在刷新相册
-                    ContentValues values;
-                    if (toType.startsWith(PictureConfig.VIDEO)) {
-                        duration = PictureMimeType.getLocalVideoDuration(cameraPath);
-                        pictureType = PictureMimeType.createVideoType(cameraPath);
-                        DebugUtil.i(TAG, "camera video createImageType:" + pictureType);
-                        values = new ContentValues(3);
-                        values.put(MediaStore.Video.Media.MIME_TYPE, pictureType);
-                        values.put(MediaStore.Video.Media.DATA, cameraPath);
-                        values.put(MediaStore.Video.Media.DURATION, duration);
-                        // Add a new record (identified by uri)
-                        getContentResolver().insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-                                values);
-                    } else {
-                        pictureType = PictureMimeType.createImageType(cameraPath);
-                        DebugUtil.i(TAG, "camera image createImageType:" + pictureType);
-                        values = new ContentValues(2);
-                        values.put(MediaStore.Images.Media.MIME_TYPE, pictureType);
-                        values.put(MediaStore.Images.Media.DATA, cameraPath);
-                        // Add a new record (identified by uri)
-                        getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                                values);
-                    }
+                    boolean eqVideo = toType.startsWith(PictureConfig.VIDEO);
+                    int duration = eqVideo ? PictureMimeType.getLocalVideoDuration(cameraPath) : 0;
+                    String pictureType = eqVideo ? PictureMimeType.createVideoType(cameraPath)
+                            : PictureMimeType.createImageType(cameraPath);
                     media.setPictureType(pictureType);
                     media.setDuration(duration);
                     media.setMimeType(mimeType);
@@ -639,8 +617,6 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
                             manualSaveFolder(media);
                         }
                     }
-                    sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
-                            Uri.fromFile(file)));
                     break;
             }
         } else if (resultCode == RESULT_CANCELED) {
