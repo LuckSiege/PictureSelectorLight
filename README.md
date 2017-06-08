@@ -68,7 +68,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.0'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.1'
 }
 
 ```
@@ -100,7 +100,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.0.0</version>
+   <version>v2.0.1</version>
 </dependency>
 
 
@@ -164,6 +164,7 @@ if (savedInstanceState == null) {
          .theme()// 主题样式设置 具体参考 values/styles
          .maxSelectNum()// 最大图片选择数量
          .minSelectNum()// 最小选择数量
+	 .imageSpanCount(4)// 每行显示个数
          .selectionMode()// 多选 or 单选
          .previewImage()// 是否可预览图片
          .previewVideo()// 是否可预览视频
@@ -300,6 +301,15 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ```
 
 # 更新日志：
+
+###### 当前版本 v2.0.1
+###### 修复图片排序问题
+###### 修复设置预览图片为false时，单选无效问题
+###### 过滤已损坏图片or视频
+###### 修改启动动画
+###### 移除isRemove() api
+
+# 历史版本：
 
 ###### 版本 v2.0.0
 ###### PictureSelector 2.0 UI界面大改版
