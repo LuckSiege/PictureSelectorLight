@@ -202,6 +202,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case PictureConfig.CHOOSE_REQUEST:
                     // 图片选择
                     selectList = PictureSelector.obtainMultipleResult(data);
+                    // 例如 LocalMedia 里面返回两种path
+                    // 1.media.getPath(); 为原图path
+                    // 2.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true
                     adapter.setList(selectList);
                     adapter.notifyDataSetChanged();
                     DebugUtil.i(TAG, "onActivityResult:" + selectList.size());
