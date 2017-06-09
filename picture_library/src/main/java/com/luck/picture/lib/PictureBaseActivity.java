@@ -53,6 +53,7 @@ public class PictureBaseActivity extends FragmentActivity {
         } else {
             config = PictureSelectionConfig.getInstance();
         }
+        compressDialog = new PictureDialog(this);
         int themeStyleId = config.themeStyleId;
         setTheme(themeStyleId);
         super.onCreate(savedInstanceState);
@@ -143,8 +144,12 @@ public class PictureBaseActivity extends FragmentActivity {
      * dismiss dialog
      */
     protected void dismissDialog() {
-        if (dialog != null && dialog.isShowing()) {
-            dialog.dismiss();
+        try {
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -152,9 +157,8 @@ public class PictureBaseActivity extends FragmentActivity {
      * compress loading dialog
      */
     protected void showCompressDialog() {
-        if (!isFinishing()) {
+        if (!isFinishing() && compressDialog != null) {
             dismissCompressDialog();
-            compressDialog = new PictureDialog(this);
             compressDialog.show();
         }
     }
@@ -163,8 +167,12 @@ public class PictureBaseActivity extends FragmentActivity {
      * dismiss compress dialog
      */
     protected void dismissCompressDialog() {
-        if (compressDialog != null && compressDialog.isShowing()) {
-            compressDialog.dismiss();
+        try {
+            if (compressDialog != null && compressDialog.isShowing()) {
+                compressDialog.dismiss();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -294,12 +302,12 @@ public class PictureBaseActivity extends FragmentActivity {
      * @param images
      */
     protected void onResult(List<LocalMedia> images) {
+        dismissCompressDialog();
         if (camera && selectionMode == PictureConfig.MULTIPLE)
             images.addAll(selectionMedias);
         Intent intent = PictureSelector.putIntentResult(images);
         setResult(RESULT_OK, intent);
         closeActivity();
-        dismissCompressDialog();
     }
 
     /**
@@ -308,5 +316,12 @@ public class PictureBaseActivity extends FragmentActivity {
     protected void closeActivity() {
         finish();
         overridePendingTransition(0, R.anim.a3);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dismissCompressDialog();
+        dismissDialog();
     }
 }
