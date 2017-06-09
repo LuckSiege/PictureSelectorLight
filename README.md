@@ -161,28 +161,27 @@ if (savedInstanceState == null) {
 // 进入相册 以下是例子：不需要的api可以不写
    PictureSelector.create(MainActivity.this)
          .openGallery()// 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()
-         .theme()// 主题样式设置 具体参考 values/styles
-         .maxSelectNum()// 最大图片选择数量
-         .minSelectNum()// 最小选择数量
-	 .imageSpanCount(4)// 每行显示个数
-         .selectionMode()// 多选 or 单选
-         .previewImage()// 是否可预览图片
-         .previewVideo()// 是否可预览视频
-         .compressGrade()// luban压缩档次，默认3档 Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
-         .isCamera()// 是否显示拍照按钮
-         .compress()// 是否压缩
+         .theme()主题样式设置(不设置为默认样式) 也可参考demo values/styles下 例如：R.style.picture.white.style
+         .maxSelectNum()// 最大图片选择数量 int
+         .minSelectNum()// 最小选择数量 int 
+	 .imageSpanCount(4)// 每行显示个数 int 
+         .selectionMode()// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
+         .previewImage()// 是否可预览图片 true or false
+         .previewVideo()// 是否可预览视频 true or false
+         .compressGrade()// luban压缩档次，默认3档 Luban.THIRD_GEAR、Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
+         .isCamera()// 是否显示拍照按钮 ture or false
+         .compress()// 是否压缩 true or false
          .compressMode()//系统自带 or 鲁班压缩 PictureConfig.SYSTEM_COMPRESS_MODE or LUBAN_COMPRESS_MODE
-         .glideOverride()// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
-         .isGif()// 是否显示gif图片
-         .openClickSound()// 是否开启点击声音
-         .selectionMedia()// 是否传入已选图片
-         //.previewEggs()// 预览图片时 是否增强左右滑动图片体验(图片滑动一半即可看到上一张是否选中)
-         //.isRemove()//是否移除图片列表已损坏的图片
-         //.compressMaxKB()//压缩最大值kb compressGrade()为Luban.CUSTOM_GEAR有效
-         //.compressWH() // 压缩宽高比 compressGrade()为Luban.CUSTOM_GEAR有效
-         //.videoQuality()// 视频录制质量 0 or 1
-         //.videoSecond()//显示多少秒以内的视频
-	 //.recordVideoSecond()//录制视频秒数 默认60s
+         .glideOverride()// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度 int
+         .isGif()// 是否显示gif图片 true or false
+         .openClickSound()// 是否开启点击声音 true or false 
+         .selectionMedia()// 是否传入已选图片 List<LocalMedia> list
+         //.previewEggs()// 预览图片时 是否增强左右滑动图片体验(图片滑动一半即可看到上一张是否选中) true or false      
+         //.compressMaxKB()//压缩最大值kb compressGrade()为Luban.CUSTOM_GEAR有效 int 
+         //.compressWH() // 压缩宽高比 compressGrade()为Luban.CUSTOM_GEAR有效 int 
+         //.videoQuality()// 视频录制质量 0 or 1 int 
+         //.videoSecond()//显示多少秒以内的视频 int 
+	 //.recordVideoSecond()//录制视频秒数 默认60s int 
          .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
 ```
 ******清除PictureSelector 2.0缓存******
