@@ -6,8 +6,8 @@
   
   [PictureSelector 2.0完整版](https://github.com/LuckSiege/PictureSelector)
   
-  [我的博客地址](http://blog.csdn.net/luck_mw)
-  
+  [我的博客地址](http://blog.csdn.net/luck_mw) 
+  
 [![](https://jitpack.io/v/LuckSiege/PictureSelectorLight.svg)](https://jitpack.io/#LuckSiege/PictureSelectorLight)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/LuckSiege)
 [![CSDN](https://img.shields.io/twitter/url/http/blog.csdn.net/luck_mw.svg?style=social)](http://blog.csdn.net/luck_mw)
