@@ -260,7 +260,7 @@ if (savedInstanceState == null) {
        .forResult(PictureConfig.CHOOSE_REQUEST);
 ```
 
-******单独启动拍照或视频 根据type自动识别******       
+******单独启动拍照或视频 根据PictureMimeType自动识别******       
 ```
  PictureSelector.create(MainActivity.this)
        .openCamera(PictureMimeType.ofImage())
