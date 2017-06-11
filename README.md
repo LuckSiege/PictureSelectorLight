@@ -1,4 +1,4 @@
-# PictureSelectorLight 2.0 无裁剪功能版 
+# PictureSelectorLight 2.0 无裁剪功能版
   一款针对android平台下的图片选择器，支持从相册或拍照选择图片或视频，支持动态权限获取、裁剪(多图裁剪)、压缩、主题自定义配置等功能、适配android 6.0+系统的开源图片选择框架。
   
   
@@ -260,7 +260,7 @@ if (savedInstanceState == null) {
        .forResult(PictureConfig.CHOOSE_REQUEST);
 ```
 
-******单独启动拍照或视频 根据type自动识别******       
+******单独启动拍照或视频 根据PictureMimeType自动识别******       
 ```
  PictureSelector.create(MainActivity.this)
        .openCamera(PictureMimeType.ofImage())
