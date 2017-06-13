@@ -69,7 +69,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.2'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.1'
 }
 
 ```
@@ -101,7 +101,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.0.2</version>
+   <version>v2.0.1</version>
 </dependency>
 
 
@@ -302,14 +302,7 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 
 # 更新日志：
 
-###### 当前版本 v2.0.2
-###### 修复三星低配手机在拍照时luban压缩时闪退问题
-###### 修复弹出相册PopupWindow卡顿问题
-###### 修复拍照内存不足导致activity被回收，拍照图片未选中问题
-###### 修复部分手机拍照出现2张图片的问题
-###### 修复部分已知bug
-
-# 历史版本：
+# 当前版本：
 
 ###### 版本 v2.0.1
 ###### 修复图片排序问题
@@ -317,6 +310,8 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ###### 过滤已损坏图片or视频
 ###### 修改启动动画
 ###### 移除isRemove() api
+
+# 历史版本：
 
 ###### 版本 v2.0.0
 ###### PictureSelector 2.0 UI界面大改版
