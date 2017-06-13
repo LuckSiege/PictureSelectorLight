@@ -1,10 +1,14 @@
 package com.luck.picture.lib;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
@@ -20,7 +24,6 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.entity.LocalMediaFolder;
 import com.luck.picture.lib.rxbus2.RxBus;
 import com.luck.picture.lib.tools.AttrsUtils;
-import com.luck.picture.lib.tools.DebugUtil;
 import com.luck.picture.lib.tools.DoubleUtils;
 import com.luck.picture.lib.tools.PictureFileUtils;
 
@@ -44,16 +47,17 @@ public class PictureBaseActivity extends FragmentActivity {
     protected PictureDialog compressDialog;
     protected List<LocalMedia> selectionMedias;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             config = (PictureSelectionConfig) savedInstanceState.getSerializable(PictureConfig.EXTRA_CONFIG);
             cameraPath = savedInstanceState.getString(PictureConfig.BUNDLE_CAMERA_PATH);
             originalPath = savedInstanceState.getString(PictureConfig.BUNDLE_ORIGINAL_PATH);
+
         } else {
             config = PictureSelectionConfig.getInstance();
         }
-        compressDialog = new PictureDialog(this);
         int themeStyleId = config.themeStyleId;
         setTheme(themeStyleId);
         super.onCreate(savedInstanceState);
@@ -151,14 +155,16 @@ public class PictureBaseActivity extends FragmentActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     /**
      * compress loading dialog
      */
     protected void showCompressDialog() {
-        if (!isFinishing() && compressDialog != null) {
+        if (!isFinishing()) {
             dismissCompressDialog();
+            compressDialog = new PictureDialog(this);
             compressDialog.show();
         }
     }
@@ -168,7 +174,9 @@ public class PictureBaseActivity extends FragmentActivity {
      */
     protected void dismissCompressDialog() {
         try {
-            if (compressDialog != null && compressDialog.isShowing()) {
+            if (!isFinishing()
+                    && compressDialog != null
+                    && compressDialog.isShowing()) {
                 compressDialog.dismiss();
             }
         } catch (Exception e) {
@@ -183,7 +191,6 @@ public class PictureBaseActivity extends FragmentActivity {
     protected void compressImage(final List<LocalMedia> result) {
         showCompressDialog();
         CompressConfig compress_config = CompressConfig.ofDefaultConfig();
-        DebugUtil.i("compressImage--->", compressMaxKB + "");
         switch (compressMode) {
             case PictureConfig.SYSTEM_COMPRESS_MODE:
                 // 系统自带压缩
@@ -193,7 +200,6 @@ public class PictureBaseActivity extends FragmentActivity {
                 break;
             case PictureConfig.LUBAN_COMPRESS_MODE:
                 // luban压缩
-                DebugUtil.i("compressImage WH--->", compressHeight + "\n" + compressHeight);
                 LubanOptions option = new LubanOptions.Builder()
                         .setMaxHeight(compressHeight)
                         .setMaxWidth(compressWidth)
@@ -221,6 +227,7 @@ public class PictureBaseActivity extends FragmentActivity {
     }
 
 
+
     /**
      * 判断拍照 图片是否旋转
      *
@@ -241,6 +248,21 @@ public class PictureBaseActivity extends FragmentActivity {
             }
         }
     }
+
+
+    /**
+     * compress or callback
+     *
+     * @param result
+     */
+    protected void handlerResult(List<LocalMedia> result) {
+        if (isCompress) {
+            compressImage(result);
+        } else {
+            onResult(result);
+        }
+    }
+
 
     /**
      * 如果没有任何相册，先创建一个最近相册出来
@@ -284,19 +306,6 @@ public class PictureBaseActivity extends FragmentActivity {
     }
 
     /**
-     * compress or callback
-     *
-     * @param result
-     */
-    protected void handlerResult(List<LocalMedia> result) {
-        if (isCompress) {
-            compressImage(result);
-        } else {
-            onResult(result);
-        }
-    }
-
-    /**
      * return image result
      *
      * @param images
@@ -326,5 +335,60 @@ public class PictureBaseActivity extends FragmentActivity {
         super.onDestroy();
         dismissCompressDialog();
         dismissDialog();
+    }
+
+
+    /**
+     * 获取DCIM文件下最新一条拍照记录
+     *
+     * @return
+     */
+    protected int getLastImageId(boolean eqVideo) {
+        try {
+            //selection: 指定查询条件
+            String absolutePath = PictureFileUtils.getDCIMCameraPath();
+            String ORDER_BY = MediaStore.Files.FileColumns._ID + " DESC";
+            String selection = eqVideo ? MediaStore.Video.Media.DATA + " like ?" :
+                    MediaStore.Images.Media.DATA + " like ?";
+            //定义selectionArgs：
+            String[] selectionArgs = {absolutePath + "%"};
+            Cursor imageCursor = this.getContentResolver().query(eqVideo ?
+                            MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                            : MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null,
+                    selection, selectionArgs, ORDER_BY);
+            if (imageCursor.moveToFirst()) {
+                int id = imageCursor.getInt(eqVideo ?
+                        imageCursor.getColumnIndex(MediaStore.Video.Media._ID)
+                        : imageCursor.getColumnIndex(MediaStore.Images.Media._ID));
+                imageCursor.close();
+                return id;
+            } else {
+                return -1;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    /**
+     * 删除部分手机 拍照在DCIM也生成一张的问题
+     *
+     * @param id
+     * @param eqVideo
+     */
+    protected void removeImage(int id, boolean eqVideo) {
+        try {
+            ContentResolver cr = getContentResolver();
+            Uri uri = eqVideo ? MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                    : MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            String selection = eqVideo ? MediaStore.Video.Media._ID + "=?"
+                    : MediaStore.Images.Media._ID + "=?";
+            cr.delete(uri,
+                    selection,
+                    new String[]{Long.toString(id)});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
