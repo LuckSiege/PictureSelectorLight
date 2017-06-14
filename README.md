@@ -2,7 +2,7 @@
   一款针对android平台下的图片选择器，支持从相册或拍照选择图片或视频，支持动态权限获取、压缩、主题自定义配置等功能、适配android 6.0+系统的开源图片选择框架。 
   
   
-  项目会一直维护，发现问题欢迎提出会第一时间修复，QQ交流群 619458861，个人QQ 893855882@qq.com  希望用得着的朋友点个start。 
+  项目会一直维护(有bug修复完成，一般周末会更新)，发现问题欢迎提出会第一时间修复，QQ交流群 619458861，个人QQ 893855882@qq.com  希望用得着的朋友点个start。 
   
   [PictureSelector 2.0完整版](https://github.com/LuckSiege/PictureSelector)
   
@@ -69,7 +69,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.1'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.3'
 }
 
 ```
@@ -101,7 +101,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.0.1</version>
+   <version>v2.0.3</version>
 </dependency>
 
 
@@ -303,6 +303,14 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 # 更新日志：
 
 # 当前版本：
+###### 版本 v2.0.3
+###### 修复部分手机拍照重复2张问题
+###### 修复内存不足导致activity被回收引发的问题
+###### 修复PopWindow弹出卡顿一下的问题
+###### 修复部分相片显示不全问题
+###### 修复部分已知bug
+
+# 历史版本：
 
 ###### 版本 v2.0.1
 ###### 修复图片排序问题
@@ -310,8 +318,6 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ###### 过滤已损坏图片or视频
 ###### 修改启动动画
 ###### 移除isRemove() api
-
-# 历史版本：
 
 ###### 版本 v2.0.0
 ###### PictureSelector 2.0 UI界面大改版
