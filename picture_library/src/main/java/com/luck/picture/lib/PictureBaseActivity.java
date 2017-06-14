@@ -24,6 +24,7 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.entity.LocalMediaFolder;
 import com.luck.picture.lib.rxbus2.RxBus;
 import com.luck.picture.lib.tools.AttrsUtils;
+import com.luck.picture.lib.tools.DateUtils;
 import com.luck.picture.lib.tools.DoubleUtils;
 import com.luck.picture.lib.tools.PictureFileUtils;
 
@@ -227,7 +228,6 @@ public class PictureBaseActivity extends FragmentActivity {
     }
 
 
-
     /**
      * 判断拍照 图片是否旋转
      *
@@ -360,8 +360,12 @@ public class PictureBaseActivity extends FragmentActivity {
                 int id = imageCursor.getInt(eqVideo ?
                         imageCursor.getColumnIndex(MediaStore.Video.Media._ID)
                         : imageCursor.getColumnIndex(MediaStore.Images.Media._ID));
+                long date = imageCursor.getLong(eqVideo ?
+                        imageCursor.getColumnIndex(MediaStore.Video.Media.DURATION)
+                        : imageCursor.getColumnIndex(MediaStore.Images.Media.DATE_ADDED));
+                int duration = DateUtils.dateDiffer(date);
                 imageCursor.close();
-                return id;
+                return duration <= 30 ? id : -1;
             } else {
                 return -1;
             }
