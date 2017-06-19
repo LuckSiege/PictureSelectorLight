@@ -48,9 +48,11 @@ public class FolderPopWindow extends PopupWindow implements View.OnClickListener
     private LinearLayout id_ll_root;
     private TextView picture_title;
     private Drawable drawableUp, drawableDown;
+    private int mimeType;
 
-    public FolderPopWindow(Context context) {
+    public FolderPopWindow(Context context, int mimeType) {
         this.context = context;
+        this.mimeType = mimeType;
         window = LayoutInflater.from(context).inflate(R.layout.picture_window_folder, null);
         this.setContentView(window);
         this.setWidth(ScreenUtils.getScreenWidth(context));
@@ -80,6 +82,7 @@ public class FolderPopWindow extends PopupWindow implements View.OnClickListener
     }
 
     public void bindFolder(List<LocalMediaFolder> folders) {
+        adapter.setMimeType(mimeType);
         adapter.bindFolderData(folders);
     }
 
@@ -107,9 +110,7 @@ public class FolderPopWindow extends PopupWindow implements View.OnClickListener
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
 
     public void setOnItemClickListener(PictureAlbumDirectoryAdapter.OnItemClickListener onItemClickListener) {
         adapter.setOnItemClickListener(onItemClickListener);
@@ -159,6 +160,7 @@ public class FolderPopWindow extends PopupWindow implements View.OnClickListener
             }
         });
     }
+
 
     /**
      * 设置选中状态

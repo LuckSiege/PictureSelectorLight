@@ -131,6 +131,15 @@ public class PictureSelectionModel {
     }
 
     /**
+     * @param enablePreviewAudio Do you want to play audio ?
+     * @return
+     */
+    public PictureSelectionModel enablePreviewAudio(boolean enablePreviewAudio) {
+        selectionConfig.enablePreviewAudio = enablePreviewAudio;
+        return this;
+    }
+
+    /**
      * @param width  compress width or PictureSelector compressGrade Luban.CUSTOM_GEAR effective
      * @param height compress height or PictureSelector compressGrade Luban.CUSTOM_GEAR effective
      * @return

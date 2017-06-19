@@ -63,7 +63,7 @@ public final class PictureSelector {
     }
 
     /**
-     * @param mimeType Select the type of picture you want，all or Picture or Video.
+     * @param mimeType Select the type of picture you want，all or Picture or Video .
      * @return LocalMedia PictureSelectionModel
      */
     public PictureSelectionModel openGallery(int mimeType) {
@@ -125,7 +125,6 @@ public final class PictureSelector {
         outState.putSerializable(PictureConfig.EXTRA_SELECT_LIST, (Serializable) selectedImages);
     }
 
-
     /**
      * set preview image
      *
@@ -170,6 +169,20 @@ public final class PictureSelector {
             Intent intent = new Intent(getActivity(), PictureVideoPlayActivity.class);
             intent.putExtra("video_path", path);
             getActivity().startActivity(intent);
+        }
+    }
+
+    /**
+     * set preview audio
+     *
+     * @param path
+     */
+    public void externalPictureAudio(String path) {
+        if (!DoubleUtils.isFastDoubleClick()) {
+            Intent intent = new Intent(getActivity(), PicturePlayAudioActivity.class);
+            intent.putExtra("audio_path", path);
+            getActivity().startActivity(intent);
+            getActivity().overridePendingTransition(R.anim.a5, 0);
         }
     }
 
