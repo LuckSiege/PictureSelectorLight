@@ -34,6 +34,7 @@
   17.新增单独拍照功能
   18.新增压缩大小设置
   19.新增Luban压缩档次设置
+  20.新增音频查询功能
  
 ```
 
@@ -69,7 +70,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.4'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.5'
 }
 
 ```
@@ -101,7 +102,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.0.4</version>
+   <version>v2.0.5</version>
 </dependency>
 
 
@@ -169,7 +170,8 @@ if (savedInstanceState == null) {
          .selectionMode()// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
          .previewImage()// 是否可预览图片 true or false
          .previewVideo()// 是否可预览视频 true or false
-         .compressGrade()// luban压缩档次，默认3档 Luban.THIRD_GEAR、Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
+	 .enablePreviewAudio() // 是否可播放音频  true or false
+         .compressGrade()// luban压缩档次，默认3档 Luban.THIRD_GEAR、Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
          .isCamera()// 是否显示拍照按钮 ture or false
          .compress()// 是否压缩 true or false
          .compressMode()//系统自带 or 鲁班压缩 PictureConfig.SYSTEM_COMPRESS_MODE or LUBAN_COMPRESS_MODE
@@ -181,7 +183,7 @@ if (savedInstanceState == null) {
          .compressMaxKB()//压缩最大值kb compressGrade()为Luban.CUSTOM_GEAR有效 int 
          .compressWH() // 压缩宽高比 compressGrade()为Luban.CUSTOM_GEAR有效 int 
          .videoQuality()// 视频录制质量 0 or 1 int 
-         .videoSecond()//显示多少秒以内的视频 int 
+         .videoSecond()//显示多少秒以内的视频or音频也可适用 int 
 	 .recordVideoSecond()//录制视频秒数 默认60s int 
          .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
 ```
@@ -303,11 +305,14 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 # 更新日志：
 
 # 当前版本：
+###### 新增音频功能查询
+###### 修复设置查询视频秒数，0秒视频也能获取到bug
+###### 修复部分已知bug
+
+# 历史版本：
 ###### 版本 v2.0.4
 ###### 重构预览图片代码
 ###### 修复几处bug
-
-# 历史版本：
 
 ###### 版本 v2.0.3
 ###### 修复部分手机拍照重复2张问题
