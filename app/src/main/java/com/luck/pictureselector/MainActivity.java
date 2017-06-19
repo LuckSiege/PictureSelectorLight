@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .enablePreviewAudio(cb_preview_audio.isChecked())// 是否预览音频
                         .compressGrade(Luban.THIRD_GEAR)// luban压缩档次，默认3档 Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
                         .isCamera(cb_isCamera.isChecked())// 是否显示拍照按钮
+                        //.setOutputCameraPath("/Chinayie/App")// 自定义拍照保存路径
                         .compress(cb_compress.isChecked())// 是否压缩
                         .compressMode(compressMode)//系统自带 or 鲁班压缩 PictureConfig.SYSTEM_COMPRESS_MODE or LUBAN_COMPRESS_MODE
                         .glideOverride(160, 160)// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
