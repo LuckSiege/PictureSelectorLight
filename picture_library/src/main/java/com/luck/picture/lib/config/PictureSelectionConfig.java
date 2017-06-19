@@ -22,6 +22,7 @@ import java.util.List;
 public final class PictureSelectionConfig implements Serializable {
     public int mimeType;
     public boolean camera;
+    public String outputCameraPath;
     @StyleRes
     public int themeStyleId;
     public int selectionMode;
@@ -77,6 +78,7 @@ public final class PictureSelectionConfig implements Serializable {
         checkNumMode = false;
         openClickSound = false;
         previewEggs = false;
+        outputCameraPath = "";
         selectionMedias = new ArrayList<>();
         DebugUtil.i("*******", "reset PictureSelectionConfig");
     }

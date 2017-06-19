@@ -35,9 +35,9 @@ public final class PictureConfig {
     public static final int MAX_COMPRESS_SIZE = 102400;
     public static final int TYPE_CAMERA = 1;
     public static final int TYPE_PICTURE = 2;
-    public final static int TYPE_AUDIO = 3;
     public final static int SINGLE = 1;
     public final static int MULTIPLE = 2;
+    public final static int TYPE_AUDIO = 3;
 
     public final static int LUBAN_COMPRESS_MODE = 1;
     public final static int SYSTEM_COMPRESS_MODE = 2;

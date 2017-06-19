@@ -355,7 +355,8 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (cameraIntent.resolveActivity(getPackageManager()) != null) {
             File cameraFile = PictureFileUtils.createCameraFile(this,
-                    mimeType == PictureConfig.TYPE_ALL ? PictureConfig.TYPE_IMAGE : mimeType);
+                    mimeType == PictureConfig.TYPE_ALL ? PictureConfig.TYPE_IMAGE : mimeType,
+                    outputCameraPath);
             cameraPath = cameraFile.getAbsolutePath();
             Uri imageUri = parUri(cameraFile);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
@@ -370,7 +371,8 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
         Intent cameraIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
         if (cameraIntent.resolveActivity(getPackageManager()) != null) {
             File cameraFile = PictureFileUtils.createCameraFile(this, mimeType ==
-                    PictureConfig.TYPE_ALL ? PictureConfig.TYPE_VIDEO : mimeType);
+                            PictureConfig.TYPE_ALL ? PictureConfig.TYPE_VIDEO : mimeType,
+                    outputCameraPath);
             cameraPath = cameraFile.getAbsolutePath();
             Uri imageUri = parUri(cameraFile);
             DebugUtil.i(TAG, "video second:" + recordVideoSecond);
@@ -396,7 +398,8 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
                     Intent cameraIntent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
                     if (cameraIntent.resolveActivity(getPackageManager()) != null) {
                         File cameraFile = PictureFileUtils.createCameraFile
-                                (PictureSelectorActivity.this, mimeType);
+                                (PictureSelectorActivity.this, mimeType,
+                                        outputCameraPath);
                         cameraPath = cameraFile.getAbsolutePath();
                         startActivityForResult(cameraIntent, PictureConfig.REQUEST_CAMERA);
                     }
