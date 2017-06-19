@@ -13,7 +13,21 @@
 [![CSDN](https://img.shields.io/twitter/url/http/blog.csdn.net/luck_mw.svg?style=social)](http://blog.csdn.net/luck_mw)
 [![I](https://img.shields.io/github/issues/LuckSiege/PictureSelector.svg)](https://github.com/LuckSiege/PictureSelector/issues)
 
-******功能特点：******  
+## 目录
+-[功能特点](#功能特点)<br>
+-[集成方式](#集成方式)<br>
+-[常见错误](#常见错误)<br>
+-[功能配置](#功能配置)<br>
+-[缓存清除](#缓存清除)<br>
+-[主题配置](#主题配置)<br>
+-[常用功能](#常用功能)<br>
+-[结果回调](#结果回调)<br>
+-[更新日志](#更新日志)<br>
+-[混淆配置](#混淆配置)<br>
+-[兼容性测试](#兼容性测试)<br>
+-[演示效果](#演示效果)<br>
+
+## 功能特点
 ```
   1.适配android6.0+系统 
   2.解决图片过大oom闪退问题
@@ -64,7 +78,7 @@
 
 ```
 
-******集成步骤******
+## 集成方式
 
 方式一 compile引入
 
@@ -108,7 +122,7 @@ step 2.
 
 ```
 
-******常见错误*******
+## 常见错误
 ```
  问题一：
  rxjava冲突：在app build.gradle下添加
@@ -158,7 +172,7 @@ if (savedInstanceState == null) {
 
 ```
 
-******相册启动构造方法******
+## 功能配置
 ```
 // 进入相册 以下是例子：不需要的api可以不写
    PictureSelector.create(MainActivity.this)
@@ -187,13 +201,13 @@ if (savedInstanceState == null) {
 	 .recordVideoSecond()//录制视频秒数 默认60s int 
          .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
 ```
-******清除PictureSelector 2.0缓存******
+## 缓存清除
 ```
  //包括压缩后的缓存，要在上传成功后调用，注意：需要系统sd卡权限 
  PictureFileUtils.deleteCacheDirFile(MainActivity.this);
  
 ```
-******PictureSelector 2.0 主题配置****** 
+## 主题配置
 
 ```
 <!--默认样式 注意* 样式只可修改，不能删除任何一项 否则报错-->
@@ -254,6 +268,7 @@ if (savedInstanceState == null) {
     </style>
 
 ```
+## 常用功能
 
 ******启动相册并拍照******       
 ```
@@ -279,7 +294,7 @@ PictureSelector.create(MainActivity.this).externalPicturePreview(position, selec
 ```
 PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ```
-******图片回调完成结果返回******
+## 结果回调
 ```
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -302,7 +317,7 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
     
 ```
 
-# 更新日志：
+## 更新日志
 
 # 当前版本：
 ###### 新增音频功能查询
@@ -343,7 +358,7 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ###### 4.PhotoView:1.2.4
 ###### 5.luban
 
-# 混淆配置
+## 混淆配置
 ```
 #PictureSelector 2.0
  -keep class com.luck.picture.lib.** { *; }
@@ -382,12 +397,12 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 }
 ```
 
-# 兼容性测试：
+## 兼容性测试
 ******腾讯优测-深度测试-通过率达到100%******
 
 ![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/test.png)
 
-# 演示效果：
+## 演示效果
 
 ![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/1.jpg)
 ![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/2.jpg)
