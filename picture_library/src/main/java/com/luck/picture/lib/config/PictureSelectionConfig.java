@@ -49,7 +49,7 @@ public final class PictureSelectionConfig implements Serializable {
     public boolean openClickSound;
     public boolean previewEggs;
 
-    public List<LocalMedia> selectionMedias = new ArrayList<>();
+    public List<LocalMedia> selectionMedias;
 
     private void reset() {
         mimeType = PictureConfig.TYPE_IMAGE;
