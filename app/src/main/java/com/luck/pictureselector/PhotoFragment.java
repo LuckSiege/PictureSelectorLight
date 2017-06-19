@@ -47,7 +47,7 @@ public class PhotoFragment extends Fragment implements View.OnClickListener,
     private ImageView left_back, minus, plus;
     private RadioGroup rgb_compress, rgb_style, rgb_photo_mode;
     private CheckBox cb_voice, cb_choose_mode, cb_isCamera, cb_isGif,
-            cb_preview_img, cb_preview_video, cb_compress,
+            cb_preview_img, cb_preview_video, cb_compress, cb_preview_audio,
             cb_mode;
     private int compressMode = PictureConfig.SYSTEM_COMPRESS_MODE;
     private int themeId;
@@ -79,6 +79,7 @@ public class PhotoFragment extends Fragment implements View.OnClickListener,
         cb_preview_video = (CheckBox) rootView.findViewById(R.id.cb_preview_video);
         cb_compress = (CheckBox) rootView.findViewById(R.id.cb_compress);
         cb_mode = (CheckBox) rootView.findViewById(R.id.cb_mode);
+        cb_preview_audio = (CheckBox) rootView.findViewById(R.id.cb_preview_audio);
         rgb_compress.setOnCheckedChangeListener(this);
         rgb_style.setOnCheckedChangeListener(this);
         rgb_photo_mode.setOnCheckedChangeListener(this);
@@ -108,6 +109,10 @@ public class PhotoFragment extends Fragment implements View.OnClickListener,
                     case 2:
                         // 预览视频
                         PictureSelector.create(PhotoFragment.this).externalPictureVideo(media.getPath());
+                        break;
+                    case 3:
+                        // 预览音频
+                        PictureSelector.create(PhotoFragment.this).externalPictureAudio(media.getPath());
                         break;
                 }
             }
@@ -209,6 +214,7 @@ public class PhotoFragment extends Fragment implements View.OnClickListener,
                 cb_isGif.setVisibility(View.GONE);
                 cb_preview_video.setChecked(true);
                 cb_preview_img.setChecked(true);
+                cb_preview_audio.setVisibility(View.GONE);
                 cb_preview_video.setVisibility(View.VISIBLE);
                 cb_preview_img.setVisibility(View.VISIBLE);
                 break;
@@ -221,6 +227,7 @@ public class PhotoFragment extends Fragment implements View.OnClickListener,
                 cb_preview_video.setChecked(false);
                 cb_preview_video.setVisibility(View.GONE);
                 cb_preview_img.setChecked(true);
+                cb_preview_audio.setVisibility(View.GONE);
                 cb_preview_img.setVisibility(View.VISIBLE);
                 break;
             case R.id.rb_video:
@@ -232,7 +239,12 @@ public class PhotoFragment extends Fragment implements View.OnClickListener,
                 cb_preview_video.setChecked(true);
                 cb_preview_video.setVisibility(View.VISIBLE);
                 cb_preview_img.setVisibility(View.GONE);
+                cb_preview_audio.setVisibility(View.GONE);
                 cb_preview_img.setChecked(false);
+                break;
+            case R.id.rb_audio:
+                chooseMode = PictureMimeType.ofAudio();
+                cb_preview_audio.setVisibility(View.VISIBLE);
                 break;
             case R.id.rb_compress_system:
                 compressMode = PictureConfig.SYSTEM_COMPRESS_MODE;

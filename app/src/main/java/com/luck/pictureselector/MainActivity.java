@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RadioGroup rgb_compress, rgb_style, rgb_photo_mode;
     private CheckBox cb_voice, cb_choose_mode, cb_isCamera, cb_isGif,
             cb_preview_img, cb_preview_video, cb_compress,
-            cb_mode;
+            cb_mode, cb_preview_audio;
     private int compressMode = PictureConfig.SYSTEM_COMPRESS_MODE;
     private int themeId;
     private int chooseMode = PictureMimeType.ofAll();
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cb_preview_video = (CheckBox) findViewById(R.id.cb_preview_video);
         cb_compress = (CheckBox) findViewById(R.id.cb_compress);
         cb_mode = (CheckBox) findViewById(R.id.cb_mode);
+        cb_preview_audio = (CheckBox) findViewById(R.id.cb_preview_audio);
         rgb_compress.setOnCheckedChangeListener(this);
         rgb_style.setOnCheckedChangeListener(this);
         rgb_photo_mode.setOnCheckedChangeListener(this);
@@ -98,6 +99,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         case 2:
                             // 预览视频
                             PictureSelector.create(MainActivity.this).externalPictureVideo(media.getPath());
+                            break;
+                        case 3:
+                            // 预览音频
+                            PictureSelector.create(MainActivity.this).externalPictureAudio(media.getPath());
                             break;
                     }
                 }
@@ -148,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 PictureConfig.MULTIPLE : PictureConfig.SINGLE)// 多选 or 单选
                         .previewImage(cb_preview_img.isChecked())// 是否可预览图片
                         .previewVideo(cb_preview_video.isChecked())// 是否可预览视频
+                        .enablePreviewAudio(cb_preview_audio.isChecked())// 是否预览音频
                         .compressGrade(Luban.THIRD_GEAR)// luban压缩档次，默认3档 Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
                         .isCamera(cb_isCamera.isChecked())// 是否显示拍照按钮
                         .compress(cb_compress.isChecked())// 是否压缩
@@ -174,6 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 PictureConfig.MULTIPLE : PictureConfig.SINGLE)// 多选 or 单选
                         .previewImage(cb_preview_img.isChecked())// 是否可预览图片
                         .previewVideo(cb_preview_video.isChecked())// 是否可预览视频
+                        .enablePreviewAudio(cb_preview_audio.isChecked())// 是否预览音频
                         .compressGrade(Luban.THIRD_GEAR)// luban压缩档次，默认3档 Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
                         .isCamera(cb_isCamera.isChecked())// 是否显示拍照按钮
                         .compress(cb_compress.isChecked())// 是否压缩
@@ -271,6 +278,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 cb_preview_img.setVisibility(View.GONE);
                 cb_preview_img.setChecked(false);
                 cb_compress.setVisibility(View.GONE);
+                break;
+            case R.id.rb_audio:
+                chooseMode = PictureMimeType.ofAudio();
+                cb_preview_audio.setVisibility(View.VISIBLE);
                 break;
             case R.id.rb_compress_system:
                 compressMode = PictureConfig.SYSTEM_COMPRESS_MODE;
