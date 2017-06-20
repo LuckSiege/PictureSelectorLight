@@ -187,8 +187,8 @@ if (savedInstanceState == null) {
 	 .enablePreviewAudio() // 是否可播放音频  true or false
          .compressGrade()// luban压缩档次，默认3档 Luban.THIRD_GEAR、Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
          .isCamera()// 是否显示拍照按钮 ture or false
-	 .setOutputCameraPath("/Chinayie/App")// 自定义拍照保存路径
-         .compress()// 是否压缩 true or false
+	 .setOutputCameraPath("/Chinayie/App")// 自定义拍照保存路径,可不填
+         .compress()// 是否压缩 true or false
          .compressMode()//系统自带 or 鲁班压缩 PictureConfig.SYSTEM_COMPRESS_MODE or LUBAN_COMPRESS_MODE
          .glideOverride()// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度 int
          .isGif()// 是否显示gif图片 true or false
