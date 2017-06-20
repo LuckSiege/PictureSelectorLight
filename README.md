@@ -1,4 +1,4 @@
-# PictureSelectorLight 2.0 无裁剪功能版
+# PictureSelectorLight 2.0 无裁剪功能版 
   一款针对android平台下的图片选择器，支持从相册或拍照选择图片或视频、音频，支持动态权限获取、压缩、主题自定义配置等功能、适配android 6.0+系统的开源图片选择框架。
   
   
@@ -84,7 +84,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.5'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.6'
 }
 
 ```
@@ -116,7 +116,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.0.5</version>
+   <version>v2.0.6</version>
 </dependency>
 
 
@@ -187,7 +187,8 @@ if (savedInstanceState == null) {
 	 .enablePreviewAudio() // 是否可播放音频  true or false
          .compressGrade()// luban压缩档次，默认3档 Luban.THIRD_GEAR、Luban.FIRST_GEAR、Luban.CUSTOM_GEAR
          .isCamera()// 是否显示拍照按钮 ture or false
-         .compress()// 是否压缩 true or false
+	 .setOutputCameraPath("/Chinayie/App")// 自定义拍照保存路径,可不填
+         .compress()// 是否压缩 true or false
          .compressMode()//系统自带 or 鲁班压缩 PictureConfig.SYSTEM_COMPRESS_MODE or LUBAN_COMPRESS_MODE
          .glideOverride()// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度 int
          .isGif()// 是否显示gif图片 true or false
@@ -320,36 +321,8 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ## 更新日志
 
 # 当前版本：
-###### 新增音频功能查询
-###### 修复设置查询视频秒数，0秒视频也能获取到bug
-###### 修复部分已知bug
-
-# 历史版本：
-###### 版本 v2.0.4
-###### 重构预览图片代码
-###### 修复几处bug
-
-###### 版本 v2.0.3
-###### 修复部分手机拍照重复2张问题
-###### 修复内存不足导致activity被回收引发的问题
-###### 修复PopWindow弹出卡顿一下的问题
-###### 修复部分相片显示不全问题
-###### 修复部分已知bug
-
-###### 版本 v2.0.1
-###### 修复图片排序问题
-###### 修复设置预览图片为false时，单选无效问题
-###### 过滤已损坏图片or视频
-###### 修改启动动画
-###### 移除isRemove() api
-
-###### 版本 v2.0.0
-###### PictureSelector 2.0 UI界面大改版
-###### PictureSelector 2.0 新增全部模式查询 包括图片or视频
-###### PictureSelector 2.0 启动模式由单例模式，改为链式调用
-###### UI主题 改为style.xml 配置，各界面随意定制更加方便
-###### 优化部分代码和体验去除多余逻辑
-###### 修复1.0版本在fragment不回调onActivityResult()
+###### v2.0.6
+###### 1.新增拍照自定义保存路径
 
 # 项目使用第三方库：
 ###### 1.glide:3.7.0
