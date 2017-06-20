@@ -84,7 +84,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.6'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.7'
 }
 
 ```
@@ -116,7 +116,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.0.6</version>
+   <version>v2.0.7</version>
 </dependency>
 
 
@@ -321,6 +321,10 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ## 更新日志
 
 # 当前版本：
+###### v2.0.7
+###### 1.修复已知bug
+
+# 历史版本：
 ###### v2.0.6
 ###### 1.新增拍照自定义保存路径
 
