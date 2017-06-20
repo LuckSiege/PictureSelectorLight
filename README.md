@@ -320,9 +320,9 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 
 ## 更新日志
 
-# 当前版本v2.0.6：
-
-###### 新增拍照自定义保存路径
+# 当前版本：
+###### v2.0.6
+###### 1.新增拍照自定义保存路径
 
 # 项目使用第三方库：
 ###### 1.glide:3.7.0
