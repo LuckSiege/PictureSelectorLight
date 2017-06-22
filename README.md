@@ -1,4 +1,4 @@
-# PictureSelectorLight 2.0 无裁剪功能版
+# PictureSelectorLight 2.0 无裁剪功能版 
   一款针对android平台下的图片选择器，支持从相册或拍照选择图片或视频、音频，支持动态权限获取、压缩、主题自定义配置等功能、适配android 6.0+系统的开源图片选择框架。
   
   
@@ -84,7 +84,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.6'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.7'
 }
 
 ```
@@ -116,7 +116,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.0.6</version>
+   <version>v2.0.7</version>
 </dependency>
 
 
@@ -321,6 +321,10 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ## 更新日志
 
 # 当前版本：
+###### v2.0.7
+###### 1.修复已知bug
+
+# 历史版本：
 ###### v2.0.6
 ###### 1.新增拍照自定义保存路径
 
