@@ -39,6 +39,7 @@ public final class PictureSelectionConfig implements Serializable {
     public int compressHeight;
     public int overrideWidth;
     public int overrideHeight;
+    public float sizeMultiplier;
     public boolean isCompress;
     public boolean isCamera;
     public boolean isGif;
@@ -69,6 +70,7 @@ public final class PictureSelectionConfig implements Serializable {
         compressHeight = 0;
         overrideWidth = 0;
         overrideHeight = 0;
+        sizeMultiplier = 0.5f;
         isCompress = false;
         enablePreviewAudio = true;
         isCamera = true;
