@@ -159,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         //.setOutputCameraPath("/Chinayie/App")// 自定义拍照保存路径
                         .compress(cb_compress.isChecked())// 是否压缩
                         .compressMode(compressMode)//系统自带 or 鲁班压缩 PictureConfig.SYSTEM_COMPRESS_MODE or LUBAN_COMPRESS_MODE
+                        //.sizeMultiplier(0.5f)// glide 加载图片大小 0~1之间 如设置 .glideOverride()无效
                         .glideOverride(160, 160)// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
                         .isGif(cb_isGif.isChecked())// 是否显示gif图片
                         .openClickSound(cb_voice.isChecked())// 是否开启点击声音
