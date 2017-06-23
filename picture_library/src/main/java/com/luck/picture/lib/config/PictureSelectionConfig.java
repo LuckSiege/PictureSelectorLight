@@ -40,6 +40,7 @@ public final class PictureSelectionConfig implements Serializable {
     public int overrideWidth;
     public int overrideHeight;
     public float sizeMultiplier;
+    public boolean zoomAnim;
     public boolean isCompress;
     public boolean isCamera;
     public boolean isGif;
@@ -80,6 +81,7 @@ public final class PictureSelectionConfig implements Serializable {
         checkNumMode = false;
         openClickSound = false;
         previewEggs = false;
+        zoomAnim = true;
         outputCameraPath = "";
         selectionMedias = new ArrayList<>();
         DebugUtil.i("*******", "reset PictureSelectionConfig");
