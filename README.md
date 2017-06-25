@@ -82,7 +82,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.8'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.9'
 }
 
 ```
@@ -114,7 +114,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.0.8</version>
+   <version>v2.0.9</version>
 </dependency>
 
 
@@ -321,9 +321,9 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ## 更新日志
 
 ### 当前版本：
-* v2.0.8
+* v2.0.9
 * 修复直接播放视频闪退bug
-* 升级glide为4.0rc
+* 升级glide为4.0.0 rc1
 * 新增图片列表点击缩放效果api
 
 ### 历史版本：
@@ -334,7 +334,7 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 * 新增拍照自定义保存路径
 
 ### 项目使用第三方库：
-* glide:4.0.0 RC
+* glide:4.0.0 RC1
 * rxjava:2.0.5
 * rxandroid:2.0.1
 * PhotoView:1.2.4
@@ -373,10 +373,15 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 
 #glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.AppGlideModule
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
   **[] $VALUES;
   public *;
 }
+
+# for DexGuard only
+-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
 ```
 
 ## 兼容性测试
