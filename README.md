@@ -2,7 +2,7 @@
   一款针对android平台下的图片选择器，支持从相册或拍照选择图片或视频、音频，支持动态权限获取、压缩、主题自定义配置等功能、适配android 6.0+系统的开源图片选择框架。
   
   
-  项目会一直维护(有bug修复完成，一般周末会更新)，发现问题欢迎提出会第一时间修复，QQ交流群 619458861，个人QQ 893855882@qq.com  希望用得着的朋友点个start。 
+  项目会一直维护(有bug修复完成，一般周末会更新)，发现问题欢迎提出会第一时间修复，QQ交流群 [619458861](http://shang.qq.com/wpa/qunwpa?idkey=91eb68229f9106b90ae9fa12d01b74815dd86b26c6c8d1dcbc9a27c1d87c42a0)，个人QQ 893855882@qq.com  希望用得着的朋友点个star。 
   
   [PictureSelector 2.0完整版](https://github.com/LuckSiege/PictureSelector)
   
@@ -82,7 +82,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.8'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.9'
 }
 
 ```
@@ -114,7 +114,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.0.8</version>
+   <version>v2.0.9</version>
 </dependency>
 
 
@@ -321,9 +321,9 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ## 更新日志
 
 ### 当前版本：
-* v2.0.8
+* v2.0.9
 * 修复直接播放视频闪退bug
-* 升级glide为4.0rc
+* 升级glide为4.0.0 rc1
 * 新增图片列表点击缩放效果api
 
 ### 历史版本：
@@ -334,7 +334,7 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 * 新增拍照自定义保存路径
 
 ### 项目使用第三方库：
-* glide:4.0.0 RC
+* glide:4.0.0 RC1
 * rxjava:2.0.5
 * rxandroid:2.0.1
 * PhotoView:1.2.4
@@ -373,28 +373,5 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 
 #glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.AppGlideModule
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
-```
-
-## 兼容性测试
-******腾讯优测-深度测试-通过率达到100%******
-
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/test.png)
-
-## 演示效果
-
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/1.jpg)
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/2.jpg)
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/3.jpg)
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/4.jpg)
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/white.jpg)
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/blue.jpg)
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/7.jpg)
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/8.jpg)
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/audio.jpg)
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/9.jpg)
-![image](https://github.com/LuckSiege/PictureSelectorLight/blob/master/image/10.jpg)
-
