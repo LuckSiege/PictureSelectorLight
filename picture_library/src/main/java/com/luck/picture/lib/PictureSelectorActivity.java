@@ -247,10 +247,9 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
             complete_textColor = AttrsUtils.getTypeValueColor(this, R.attr.picture_complete_textColor);
         }
         adapter = new PictureImageGridAdapter(mContext, config);
-        adapter.bindSelectImages(selectionMedias);
-        changeImageNumber(selectionMedias);
-        picture_recycler.setAdapter(adapter);
         adapter.setOnPhotoSelectChangedListener(PictureSelectorActivity.this);
+        adapter.bindSelectImages(selectionMedias);
+        picture_recycler.setAdapter(adapter);
         String titleText = picture_title.getText().toString().trim();
         if (isCamera) {
             isCamera = StringUtils.isCamera(titleText);
@@ -924,7 +923,6 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
                                     if (selectedImages.size() < maxSelectNum) {
                                         selectedImages.add(media);
                                         adapter.bindSelectImages(selectedImages);
-                                        changeImageNumber(selectedImages);
                                     }
                                 }
                                 adapter.notifyDataSetChanged();
