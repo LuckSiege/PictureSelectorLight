@@ -82,7 +82,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.0.9'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.1.0'
 }
 
 ```
@@ -114,7 +114,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.0.9</version>
+   <version>v2.1.0</version>
 </dependency>
 
 
@@ -321,12 +321,17 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ## 更新日志
 
 ### 当前版本：
+* v2.1.0
+* 修复android 7.1.1系统 PopupWindow弹出位置不对问题
+* 删除多余代码
+* 修复全部模式下设置查询视频秒数无效问题
+
+### 历史版本：
 * v2.0.9
 * 修复直接播放视频闪退bug
 * 升级glide为4.0.0 rc1
 * 新增图片列表点击缩放效果api
 
-### 历史版本：
 * v2.0.7
 * 修复已知bug
 
