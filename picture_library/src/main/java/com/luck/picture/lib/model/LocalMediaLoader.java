@@ -196,7 +196,6 @@ public class LocalMediaLoader {
                                                 + " OR "
                                                 + MediaStore.Files.FileColumns.MEDIA_TYPE + "=? " +
                                                 "and " + condition + ")"
-
                                                 + " AND " + MediaStore.MediaColumns.SIZE + ">0"
                                                 + " AND " + MediaStore.MediaColumns.WIDTH + ">0";
 
