@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.luck.picture.lib.R;
 import com.luck.picture.lib.anim.OptAnimationLoader;
@@ -194,7 +193,6 @@ public class PictureImageGridAdapter extends RecyclerView.Adapter<RecyclerView.V
                         .asBitmap()
                         .load(path)
                         .apply(options)
-                        .transition(new BitmapTransitionOptions().crossFade(500))
                         .into(contentHolder.iv_picture);
             }
             if (enablePreview || enablePreviewVideo || enablePreviewAudio) {
