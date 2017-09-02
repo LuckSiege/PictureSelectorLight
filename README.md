@@ -1,4 +1,4 @@
-# PictureSelectorLight 2.0 无裁剪功能版
+# PictureSelectorLight 2.0 无裁剪功能版 
   一款针对android平台下的图片选择器，支持从相册或拍照选择图片或视频、音频，支持动态权限获取、压缩、主题自定义配置等功能、适配android 6.0+系统的开源图片选择框架。
   
   
@@ -82,7 +82,7 @@
 
 ```
 dependencies {
-    compile 'com.github.LuckSiege:PictureSelectorLight:v2.1.0'
+    compile 'com.github.LuckSiege:PictureSelectorLight:v2.1.1'
 }
 
 ```
@@ -114,7 +114,7 @@ step 2.
 <dependency>
    <groupId>com.github.LuckSiege</groupId>
    <artifactId>PictureSelectorLight</artifactId>
-   <version>v2.1.0</version>
+   <version>v2.1.1</version>
 </dependency>
 
 
@@ -321,12 +321,15 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ## 更新日志
 
 ### 当前版本：
+* v2.1.1
+* 升级glide4.0为正式版
+
+### 历史版本：
 * v2.1.0
 * 修复android 7.1.1系统 PopupWindow弹出位置不对问题
 * 删除多余代码
 * 修复全部模式下设置查询视频秒数无效问题
 
-### 历史版本：
 * v2.0.9
 * 修复直接播放视频闪退bug
 * 升级glide为4.0.0 rc1
