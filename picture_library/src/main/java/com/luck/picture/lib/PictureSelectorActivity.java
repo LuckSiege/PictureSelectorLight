@@ -121,6 +121,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
             RxBus.getDefault().register(this);
         }
         Log.i("Mike", "onCreate: 这是不合并的改动");
+        Log.i(TAG, "onCreate: 新增一个改动，要合并至Master");
         rxPermissions = new RxPermissions(this);
         LightStatusBarUtils.setLightStatusBar(this, statusFont);
         if (camera) {
