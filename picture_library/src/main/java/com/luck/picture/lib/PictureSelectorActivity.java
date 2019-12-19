@@ -120,7 +120,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
         if (!RxBus.getDefault().isRegistered(this)) {
             RxBus.getDefault().register(this);
         }
-        Log.i("Mike", "onCreate: heihei");
+        Log.i("Mike", "onCreate: 这是不合并的改动");
         rxPermissions = new RxPermissions(this);
         LightStatusBarUtils.setLightStatusBar(this, statusFont);
         if (camera) {
