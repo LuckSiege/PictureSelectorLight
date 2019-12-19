@@ -3,6 +3,7 @@ package com.luck.pictureselector;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,6 +28,7 @@ public class SimpleActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_activity:
                 intent = new Intent(SimpleActivity.this, MainActivity.class);
                 startActivity(intent);
+                Log.i("Mike", "新分支测试");
                 break;
             case R.id.btn_fragment:
                 intent = new Intent(SimpleActivity.this, PhotoFragmentActivity.class);
