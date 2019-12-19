@@ -14,6 +14,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -119,6 +120,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
         if (!RxBus.getDefault().isRegistered(this)) {
             RxBus.getDefault().register(this);
         }
+        Log.i("Mike", "onCreate: 新分支改动");
         rxPermissions = new RxPermissions(this);
         LightStatusBarUtils.setLightStatusBar(this, statusFont);
         if (camera) {
